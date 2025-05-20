@@ -1,2 +1,2 @@
 # SyncoreHub
-We Support 20+ Games Populare and Not Well Know Games
+We Support 10+ Games Populare and Not Well Know Games
