@@ -248,7 +248,7 @@ local GameScripts = {
     },
 }
 
-local UniversalScript = ""
+local UniversalScript = "loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();"
 
 local function ExecuteScript()
     local currentPlaceID = game.PlaceId
