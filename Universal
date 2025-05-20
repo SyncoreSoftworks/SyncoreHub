@@ -1,0 +1,151 @@
+local fov = 25
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local Cam = game.Workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+
+local FOVring = Drawing.new("Circle")
+FOVring.Visible = true
+FOVring.Thickness = 3
+FOVring.Filled = false
+FOVring.Radius = fov
+FOVring.Position = Cam.ViewportSize / 2
+
+local function updateRainbowColor()
+    local time = tick()
+    local r = math.sin(time * 0.5) * 0.5 + 0.5
+    local g = math.sin(time * 0.5 + math.pi / 2) * 0.5 + 0.5
+    local b = math.sin(time * 0.5 + math.pi) * 0.5 + 0.5
+    return Color3.fromRGB(r * 255, g * 255, b * 255)
+end
+
+local function updateDrawings()
+    FOVring.Position = Cam.ViewportSize / 2
+    FOVring.Color = updateRainbowColor()
+end
+
+UserInputService.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Delete then
+        RunService:UnbindFromRenderStep("FOVUpdate")
+        FOVring:Remove()
+        for _, hl in pairs(highlights) do
+            hl:Destroy()
+        end
+    end
+end)
+
+local function lookAt(target)
+    local lookVector = (target - Cam.CFrame.Position).unit
+    Cam.CFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector)
+end
+
+local function getClosestPlayerInFOV(trg_part)
+    local nearest = nil
+    local last = math.huge
+    local playerMousePos = Cam.ViewportSize / 2
+
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer and player.Team ~= LocalPlayer.Team and player.Character then
+            local part = player.Character:FindFirstChild(trg_part)
+            if part then
+                local ePos, isVisible = Cam:WorldToViewportPoint(part.Position)
+                local distance = (Vector2.new(ePos.X, ePos.Y) - playerMousePos).Magnitude
+
+                if distance < last and isVisible and distance < fov then
+                    last = distance
+                    nearest = player
+                end
+            end
+        end
+    end
+
+    return nearest
+end
+
+local highlights = {}
+
+local function createHighlight(player)
+    if highlights[player] or not player.Character then return end
+    local isEnemy = player.Team ~= LocalPlayer.Team
+    if isEnemy then
+        local hl = Instance.new("Highlight")
+        hl.Name = "EnemyESP"
+        hl.Adornee = player.Character
+        hl.Parent = player.Character
+        hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        hl.FillTransparency = 0.7
+        hl.OutlineTransparency = 0.5
+        hl.FillColor = Color3.new(1, 0, 0)
+        hl.OutlineColor = updateRainbowColor()
+        highlights[player] = hl
+    end
+end
+
+local function removeHighlight(player)
+    if highlights[player] then
+        highlights[player]:Destroy()
+        highlights[player] = nil
+    end
+end
+
+local function monitorPlayer(player)
+    local function onCharacterAdded(char)
+        task.wait(0.1)
+        removeHighlight(player)
+        createHighlight(player)
+    end
+
+    player.CharacterAdded:Connect(onCharacterAdded)
+    player:GetPropertyChangedSignal("Team"):Connect(function()
+        removeHighlight(player)
+        if player.Character then
+            createHighlight(player)
+        end
+    end)
+
+    if player.Character then
+        createHighlight(player)
+    end
+end
+
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        monitorPlayer(player)
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    if player ~= LocalPlayer then
+        monitorPlayer(player)
+    end
+end)
+
+Players.PlayerRemoving:Connect(function(player)
+    removeHighlight(player)
+end)
+
+task.spawn(function()
+    while true do
+        for _, player in ipairs(Players:GetPlayers()) do
+            if player ~= LocalPlayer then
+                if player.Team ~= LocalPlayer.Team and player.Character and not highlights[player] then
+                    createHighlight(player)
+                elseif player.Team == LocalPlayer.Team then
+                    removeHighlight(player)
+                end
+            end
+        end
+        task.wait(1)
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    updateDrawings()
+    if UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2) then
+        local closest = getClosestPlayerInFOV("Head")
+        if closest and closest.Character and closest.Character:FindFirstChild("Head") then
+            lookAt(closest.Character.Head.Position)
+        end
+    end
+end)
