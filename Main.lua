@@ -248,7 +248,7 @@ local GameScripts = {
     },
 }
 
-local UniversalScript = "loadstring(game:HttpGet("https://raw.githubusercontent.com/SyncoreSoftworks/SyncoreHub/heads/main/Universal"))();"
+local UniversalScript = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/SyncoreSoftworks/SyncoreHub/refs/heads/main/Universal"))();'
 
 local function ExecuteScript()
     local currentPlaceID = game.PlaceId
