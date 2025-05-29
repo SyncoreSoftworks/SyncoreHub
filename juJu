@@ -1,1684 +1,1403 @@
-getgenv().Arceus = {
-    Silent = {
-        ["Enabled"] = (true), -- // Use The Silent Aim Or Not
-        
-        ["Part"] = ("UpperTorso"), -- // What Part It Targerts
-        ["UseAirPart"] = (true), -- // When Target Isnt On The Ground It Uses This Part
-        ["AirPart"] = ("Head"), -- // The Parts It Targets On When Player Isnt On The Ground
-        ["ClosestPart"] = (true), -- // Automatically Gets The Closest Part Of The Target And Uses That
-        ["ClosestPoint"] = (false), -- // Automatically Gets The Closest Point Of The Target Part And Uses That
-        
-        ["HitChance"] = (100), -- // The Chance You Will Hit The Target
-        
-        ["Humanize"] = (true), -- // Makes Soo The Silent Doesnt Hit The Same Position
-        ["HumanizeValue"] = (2), -- // Makes How Much Power It Changes
-        
-        ["TriggerBot"] = (false), -- // Shoots AutoMatically
-        ["UseTriggerBotKeybind"] = (false), -- // Enable / Disable TriggerBot Keybind
-        ["TriggerBotKey"] = ("MouseButton3"), -- // KeyBind To Enable / Disable TriggerBot You Can Find More At https://create.roblox.com/docs/reference/engine/enums/UserInputType
-        
-        ["PredictMovement"] = (false), -- // Predicts Targets Movement
-        ["AutoPrediction"] = (false), -- // Automatically Gets An Good Prediction
-        ["PredictionVelocity"] = (0), -- // How Much It Predicts
-        
-        ["AntiGroundShots"] = (true), -- // Makes So You Dont Shoot The Ground
-        ["AntiGroundValue"] = (1), -- // How Much Velocity It Rmoves From Target
-        ["WhenAntiGroundActivate"] = (-20), -- // When Its Gonna Activate
-        
-        ["AntiAimViewer"] = (true), -- // Bypasses The Mouse Position For The Server 
+script_key = "TosUAkAOlASMrFOCIVDZbXDsLCqLMgPi"; -- add ur key here
 
-        ["WallCheck"] = (true), -- // Checks If Theres A Wall
-        
-        ["CheckIf_KO"] = (true), -- // Checks If Target Is Grabbed Or Knocked
-        ["CheckIf_TargetDeath"] = (true), -- // Checks If Target Is Dead
-        
-        ["UseKeybind"] = (true), -- // Use The KeyBind To Enable / Disable The Silent Aim
-        ["Keybind"] = (";") -- // The Keybind That Enables / Disables The Silent Aim
+getgenv().Krylon = {
+    ['Core'] = {
+        ['Version'] = 'v1.0',
     },
-    GunFov = {
-        ["Enabled"] = (true), -- // Gun Fov / Fov Is Automatically Changed To Specific Gun Equipped
+    ['Silent Aim'] = {
+        ['Enabled'] = true,
+        ['Checks'] = {'Wall', 'Knocked', 'Grabbed', 'Vehicle'}, -- [[ Wall, Knocked, Grabbed, Vehicle ]]
+        ['Keybind'] = 'P',
+        ['Hit Location'] = {
+            ['Type'] = 'Closest Part', -- [[ Closest Part or Closest Point ]]
+            ['Parts'] = {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso', 'LeftHand', 'RightHand', 'LeftLowerArm', 'RightLowerArm', 'LeftUpperArm', 'RightUpperArm', 'LeftFoot', 'LeftLowerLeg',  'LeftUpperLeg', 'RightLowerLeg', 'RightFoot',  'RightUpperLeg'} --- you can put more than one parts
+        },
+        ['Fov'] = {
+            ['Enabled'] = true,
+                ['Value'] = 7,
+                ['Show Fov'] = false,
+        },
+        ['Prediction'] = {
+            ['Sets'] = {
+                ["Low"] = 0,
+                ["Medium"] = 0,
+                ["High"] = 0,
+                ["Extreme"] = 0,
+
+            }
+        },
+    },
+    ['Target Aim'] = {
+        ['Enabled'] = false,
+        ['Checks'] = {'Wall', 'Knocked', 'Grabbed', 'Vehicle'},
+        ['Keybind'] = 'Q',
+        ['Hit Location'] = {
+            ['Type'] = 'Closest Point', -- [[ Closest Part or Closest Point ]]
+            ['Parts'] = {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso', 'LeftHand', 'RightHand', 'LeftLowerArm', 'RightLowerArm', 'LeftUpperArm', 'RightUpperArm', 'LeftFoot', 'LeftLowerLeg',  'LeftUpperLeg', 'RightLowerLeg', 'RightFoot',  'RightUpperLeg'} --- you can put more than one parts
+        },
+        ['Fov'] = {
+            ['Enabled'] = true,
+                ['Value'] = 8.5,
+                ['Show Fov'] = false,
+        },
+        ['Prediction'] = {
+            ['Sets'] = {
+                ["Low"] = 0,
+                ["Medium"] = 0,
+                ["High"] = 0,
+                ["Extreme"] = 0,
+
+            }
+        },
+    },
+    ['Camlock'] = {
+        ['Enabled'] = true,
+        ['Keybind'] = 'C',
+        ['Checks'] = {'Wall', 'Knocked', 'Grabbed', 'Vehicle'},
+        ['Fov'] = 10,
+        ['Show Fov'] = false,
+        
+        ['Value'] = {
+            ['Snappiness'] = 0.059,
+            ['ThirdPerson'] = false,
+            ['FirstPerson'] = true, 
+        },
     
-["Double-Barrel SG"] = {["Fov"] = 35}, -- // Db
-        ["Revolver"] = {["Fov"] = 25}, -- // Rev
-             ["SMG"] = {["Fov"] = 3}, -- // Smg
-         ["Shotgun"] = {["Fov"] = 18}, -- // Shotgun
-           ["Rifle"] = {["Fov"] = 3}, -- // Rifle
- ["TacticalShotgun"] = {["Fov"] = 35}, -- // Tactical
-        ["Silencer"] = {["Fov"] = 2.8}, -- // Smg
-            ["AK47"] = {["Fov"] = 2.8}, -- // Ak47
-              ["AR"] = {["Fov"] = 2.8} -- // Rifle
-        -- // You Can Add Custom Weapons If You Want To :p
+        ['Hit Location'] = {
+            ['Type'] = 'Closest Point', -- [[ Closest Part or Closest Point ]]
+            ['Parts'] = {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso', 'LeftHand', 'RightHand', 'LeftLowerArm', 'RightLowerArm', 'LeftUpperArm', 'RightUpperArm', 'LeftFoot', 'LeftLowerLeg',  'LeftUpperLeg', 'RightLowerLeg', 'RightFoot',  'RightUpperLeg'}
+        },
+    
+        ['Prediction'] = {  
+            ['Low'] = 0, 
+            ['Medium'] = 0, 
+            ['High'] = 0 
+        }
     },
-    RangeFov = {
-        ["Enabled"] = (false), -- // Gun Fov / Fov Is Automatically Changed To Specific Distance Between Target / This Will OverWrite GunFov
-        
-        ["Far_Activation"] = (math.huge), -- // Just Keep It At Math.Huge
-        ["Medium_Activation"] = (42), -- // Its Using Studs
-        ["Close_Activation"] = (16), -- // Its Uisng Studs
-        
-        ["Double-Barrel SG"] = {["Far"] = 6, ["Med"] = 8, ["Close"] = 14}, -- // Db
-        ["Revolver"] = {["Far"] = 3.4, ["Med"] = 5, ["Close"] = 10}, -- // Rev
-        ["SMG"] = {["Far"] = 3, ["Med"] = 4, ["Close"] = 6}, -- // Smg
-        ["Shotgun"] = {["Far"] = 5, ["Med"] = 7, ["Close"] = 10}, -- // Shotgun
-        ["Rifle"] = {["Far"] = 2, ["Med"] = 3, ["Close"] = 5}, -- // Rifle
-        -- // You Can Add Custom Weapons If You Want To :p
+    ['Trigger bot'] = {
+        ['Enabled'] = false,
+        ['Prediction'] = 0,
+        ['Weapons'] = {
+            '[Double-Barrel SG]',
+            '[Revolver]',
+            '[TacticalShotgun]'
+        },
+        ['Keybind'] = {
+            ['Bind'] = 'X',
+            ['Keybind Mode'] = 'Toggle' -- hold or toggle
+        },
+        ['Delay'] = {    
+            ['Value'] = 0.01,
+        },
+        ['HitParts'] = {
+            ['Type'] = true,
+            ['Parts'] = {'Head', 'UpperTorso', 'HumanoidRootPart', 'LowerTorso', 'LeftHand', 'RightHand', 'LeftLowerArm', 'RightLowerArm', 'LeftUpperArm', 'RightUpperArm', 'LeftFoot', 'LeftLowerLeg',  'LeftUpperLeg', 'RightLowerLeg', 'RightFoot',  'RightUpperLeg'}
+        },
+        ['Custom Size'] = {
+            ['Enabled'] = true, 
+            ['Value'] = 5
+        },
     },
-    SilentFov = {
-        ["Visible"] = (false), -- // If The Circle Is Showing Or Not
-        ["Filled"] = (false), -- // If The Circle Is Filled
-        ["Transparency"] = (1), -- // The Circle Transparency
-        ["Color"] = (Color3.fromRGB(0, 20, 0)), -- // Circle Transparency
-        ["Radius"] = (35) -- // How Big The Circle Is
+    ['Range'] = {
+        ['Enabled'] = true, --- how far you want them to sense someone
+        ['Silent Aim'] = 250,
+        ['Camlock'] = 250,
+        ['Trigger bot'] = 250
     },
-    AimAssist = {
-        ["Enabled"] = (true), -- // Use The Aim Assist Or Not
-        
-        ["Key"] = ("c"), -- // The Key To Lock Onto A Player
-        ["HoldMode"] = (false), -- // Enables While Only Holding The Key
-        
-        ["Part"] = ("UpperTorso"), -- // The Part That Aim Assist Locks On
-        ["ClosestPart"] = (false), -- // Automatically Gets The Closest Part Of The Target And Uses That
-        
-        ["DisableTargetDeath"] = (true), -- // Disables When Target Dies
-        ["DisableLocalDeath"] = (true), -- // Disables When You Died
-        ["DisableOn_KO"] = (true), -- // Disables If Target Is KO Or Grabbed
-        
-        ["UseCircleRadius"] = (true), -- // Only Locks On To People Inside The Circle
-        ["DisableOutSideCircle"] = (false), -- // If Target Is OutSide The Circle It Disables The Aim Assist
-        
-        ["UseShake"] = (false), -- // Shakes The Camera
-        ["ShakeValue"] = (55), -- // How Much It Shakes
-        
-        ["PredictMovement"] = (false), -- // Predicts Targets MoveMent
-        ["PredictionVelocity"] = (0.132), -- // How Much It Predicts
-        
-        ["WallCheck"] = (true), -- // Checks If Theres A Wall
-        
-        ["Smoothness_X"] = (0.3), -- // How Smooth The Aim Assist Is On X
-        ["Smoothness_Y"] = (0.3) -- // How Smooth The Aim Assist Is On Y
+    ['Speed Modifications'] = {
+        ['Options'] = {
+            ['Enabled'] = false, -- reset before working
+            ['DefaultSpeed'] = 35,
+            ['ToggleMode'] = false, -- if you want togglemovement to work
+            ['Keybinds'] = {
+                ['ToggleMovement'] = 'V',
+                ['Speed +5'] = 'M',
+                ['Speed -5'] = 'N'
+            }
+        }
     },
-    AimAssistFov = {
-        ["Visible"] = (false), -- // If The Circle Is Showing Or Not
-        ["Filled"] = (false), -- // If The Circle Is Filled
-        ["Transparency"] = (0.5), -- // Circle Transparency
-        ["Color"] = (Color3.fromRGB(255, 87, 87)), -- // Circle Transparency
-        ["Radius"] = (370) -- // How Big The Circle Is
+    ['Spread modifications'] = { 
+        ['Mode'] = "Randomizer", -- Normal or Randomizer
+        ['Spread Modifier'] = {
+            Multiplier = 0.1
+        },
+        ['Spread Randomizer'] = {
+            Start = 1,
+            End = 1
+        },
+        ['Enabled'] = false,
+        ['Toggle Key'] = "G"
     },
-    Both = {
-        ["DetectDesync"] = (true), -- // Detects Velocity Changer + Actually Hits
-        ["DesyncDetection"] = (86), -- // When It Detects
-        
-        ["UsDetectDesyncKeybind"] = (true), -- // Enable / Disable Desync Detection Keybind
-        ["DetectDesyncKey"] = ("t"), -- // KeyBind To Enable / Disable Desync Detection
-        
-        ["DetectUnderGround"] = (true), -- // Detects Common UnderGround Resolver
-        ["UnderGroundDetection"] = (-30), -- // When It Detects
-        
-        ["UseUnderGroundKeybind"] = (false), -- // Enable / Disable UnderGround Resolver Keybind
-        ["UnderGroundKey"] = ("X"), -- // KeyBind To Enable / Disable UnderGround Resolver
-        
-        ["VisibleCheck"] = (true), -- // Checks If Target Is Visible
-        ["CrewCheck"] = (true), -- // Checks If Target Is In Your Crew
-        ["FriendCheck"] = (false), -- // Checks If Target Is Your Friend
-        ["TeamCheck"] = (false), -- // Checks If Player Is In the Same Team
-        
-        ["UseLay"] = (true), -- // Enable / Disable Lay Keybind
-        ["LayKeybind"] = ("v"), -- // KeyBind To Lay
-        
-        ["SendNotification"] = (true) -- // Sends Notification When you Enabled / Disabled Stuff
-    },
-    Commands = {
-        ["Enabled"] = (true), -- // Enable / Disable Chat Command
-
-        -- // Silent Table
-        ["Silent_Enabled"] = ("!senabled"), -- // The Command To Enable / Disable Silent (With false/true)
-        ["Silent_Prediction"] = ("!spred"), -- // The Command To Change Silent Prediction (With Numbers)
-        ["Silent_Fov_Size"] = ("!sfov"), -- // The Command To Change Silent Fov (With Numbers)
-        ["Silent_Fov_Show"] = ("!sshow"), -- // The Command To Change Silent (With false/true)
-        ["Silent_HitChance"] = ("!schance"), -- // The Command To Change Silent HitChance (With Numbers)
-
-        -- // AimAssist Table
-        ["AimAssist_Enabled"] = ("!aenabled"), -- // The Command To Enable / Disable AimAssist (With false/true)
-        ["AimAssist_Prediction"] = ("!apred"), -- // The Command To Change AimAssist Prediction (With Numbers)
-        ["AimAssist_Fov_Size"] = ("!afov"), -- // The Command To Change AimAssist Fov (With Numbers)
-        ["AimAssist_Fov_Show"] = ("!ashow"), -- // The Command To Change AimAssist (With false/true)
-        ["AimAssist_SmoothX"] = ("!smoothx"), -- // The Command To Change AimAssist SmoothNess X Value (With Numbers)
-        ["AimAssist_SmoothY"] = ("!smoothy"), -- // The Command To Change AimAssist SmoothNess Y Value (With Numbers)
-        ["AimAssist_Shake"] = ("!ashake"), -- // The Command To Change AimAssist Shake Value (With Numbers)
-
-        ["CrashMode"] = (". "), -- // The Command To Crash Roblox
-    },
-
-    Esp = {
-        ["Enabled"] = (false), -- // Enabel / Disable Esp
-        ["UseEspKeybind"] = (true), -- // Enable / Disable Esp Keybind
-        ["EspKey"] = ("p"), -- // KeyBind To Enable / Disable Esp
-        ["HoldMode"] = (false), -- // Enables While Only Holding The Key
-        
-        ["Name"] = {["Enabled"] = true, ["OutLine"] = true, ["Color"] = Color3.fromRGB(255, 255, 255)}, -- // Shows Targets Name
-        ["Box"] = {["Enabled"] = false, ["OutLine"] = true, ["Color"] = Color3.fromRGB(255, 255, 255)}, -- // Shows Box On Target
-        ["HealthBar"] = {["Enabled"] = true, ["OutLine"] = true, ["Color"] = Color3.fromRGB(0, 255, 0)}, -- // Shows An Health Bar On Target
-        ["HealthText"] = {["Enabled"] = false, ["OutLine"] = true, ["Color"] = Color3.fromRGB(0, 255, 0)}, -- // Shows An Text How Much Hp Target Have
-        ["Distance"] = {["Enabled"] = false, ["OutLine"] = true, ["Color"] = Color3.fromRGB(255, 255, 255)} -- // Shows Targets Distance Between You
-    }
 }
 
--- if not getgenv().directory then
---     game.Players.LocalPlayer:Kick("Script directory was not found!\nNOTE: THE SERVER MAY BE DOWN \nplease dm 1catlol if you have entered yours correctly")
---     wait(3)
---     game.Players.LocalPlayer:Destroy()
---     return LPH_CRASH()
--- end
+local correctKey = script_key
 
--- hookfunction security
-    local exe_name, exe_version = identifyexecutor()
-    local function home999() end
-    local function home888() end
+local Players          = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local TweenService     = game:GetService("TweenService")
 
-    if exe_name ~= "Wave Windows" then
-        hookfunction(home888, home999)
-        if isfunctionhooked(home888) == false then
-            game.Players.LocalPlayer:Destroy()
-            return LPH_CRASH()
-        end
-    end 
-    
-    local function check_env(env)
-        for _, func in env do
-            if type(func) ~= "function" then
-                continue
-            end
+-- “Intro finished” signal
+local introFinishedEvent = Instance.new("BindableEvent")
 
-            local functionhook = isfunctionhooked(func)
+local function showConsole()
+    -- Auth vars
+    local accessGranted    = false
+    local otherThingLoaded = false
+    math.randomseed(tick())
+    local pid = math.random(10000, 99999)
 
-            if functionhook then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            end
-        end
-    end
-
-    check_env( getgenv() )
-    check_env( getrenv() )
---
-
-local Lua_Fetch_Connections = getconnections
-local Lua_Fetch_Upvalues = getupvalues
-local Lua_Hook = hookfunction 
-local Lua_Hook_Method = hookmetamethod
-local Lua_Unhook = restorefunction
-local Lua_Replace_Function = replaceclosure
-local Lua_Set_Upvalue = setupvalue
-local Lua_Clone_Function = clonefunction
-
-local Game_RunService = game:GetService("RunService")
-local Game_LogService = game:GetService("LogService")
-local Game_LogService_MessageOut = Game_LogService.MessageOut
-
-local String_Lower = string.lower
-local Table_Find = table.find
-local Get_Type = type
-
-local Current_Connections = {};
-local Hooked_Connections = {};
-
-local function Test_Table(Table, Return_Type)
-    for TABLE_INDEX, TABLE_VALUE in Table do
-        if type(TABLE_VALUE) == String_Lower(Return_Type) then
-            return TABLE_VALUE, TABLE_INDEX
-        end
-
-        continue
-    end
-end
-
-local function Print_Table(Table)
-    table.foreach(Table, print)
-end
-
-if getgenv().DEBUG then
-    print("[auth.injected.live] Waiting...")
-end
-
-local good_check = 0
-
-function auth_heart()
-    -- local avalible = pcall(function() return loadstring(game:HttpGet("https://auth.injected.live/" .. directory))() end)
-    
-    -- if (not avalible or not game:HttpGet("https://auth.injected.live/" .. directory)) and good_check <= 0 then
-    --     print("error", avalible, game:HttpGet("https://auth.injected.live/" .. directory))
-    --     game.Players.LocalPlayer:Destroy()
-    --     return LPH_CRASH()
-    -- end
-
-    return true , true
-end
-
-function Lua_Common_Intercept(old, ...)
-    print(...)
-    return old(...)
-end
-
-function XVNP_L(CONNECTION)
-    local s, e = pcall(function()
-        local OPENAC_TABLE = Lua_Fetch_Upvalues(CONNECTION.Function)[9]
-        local OPENAC_FUNCTION = OPENAC_TABLE[1]
-        local IGNORED_INDEX = {3, 12, 1, 11, 15, 8, 20, 18, 22}
-
-        --[[
-            3(Getfenv), 1(create thread), 12(Some thread function errors btw), 11( buffer (BANS YOU) ), 8(BXOR), 14(WRAP), 15(YIELD), 22(JUNK), 20(Setfenv), 18(Idk for now)
-        ]]
-
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 14, function(...)
-            return function(...)
-                local args = {...}
-
-                if type(args[1]) == "table" and args[1][1] then
-                    pcall(function()
-                        if type(args[1][1]) == "userdata" then
-                            args[1][1]:Disconnect()
-                            args[1][2]:Disconnect()
-                            args[1][3]:Disconnect()
-                            args[1][4]:Disconnect()
-                            --warn("[XVNP] DISCONNECTING CURRENT FUNCTIONS")
-                        end
-
-                        --Print_Table(args[1])
-                    end)
-                end 
-            end
-        end)
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 1, function(...)
-            task.wait(200)
-        end)
-
-        hookfunction(OPENAC_FUNCTION, function(...)
-            --warn("[XVNP DEBUG]", ...)
-            return {}
-        end)
+    task.spawn(function()
+        wait(1)
+        otherThingLoaded = true
     end)
-end
 
-local XVNP_LASTUPDATE = 0
-local XVNP_UPDATEINTERVAL = 5
+    -- Build the console GUI
+    local screenGui2 = Instance.new("ScreenGui")
+    screenGui2.Name   = "CST"
+    screenGui2.Parent = game.CoreGui
 
-local XVNP_CONNECTIONSNIFFER;
+    local frame2 = Instance.new("Frame")
+    frame2.Name             = "MoozeFrame"
+    frame2.Parent           = screenGui2
+    frame2.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+    frame2.Size             = UDim2.new(0, 600, 0, 300)
+    frame2.Position         = UDim2.new(0.5, -300, 0.5, -150)
+    frame2.ClipsDescendants = true
 
-XVNP_CONNECTIONSNIFFER = Game_RunService.RenderStepped:Connect(function()
-    if #Lua_Fetch_Connections(Game_LogService_MessageOut) >= 2 then
-        --print("[XVNP] !Emulator overflow!")
-        XVNP_CONNECTIONSNIFFER:Disconnect()
-    end
+    local cornerMain = Instance.new("UICorner")
+    cornerMain.CornerRadius = UDim.new(0, 8)
+    cornerMain.Parent       = frame2
 
-    if tick() - XVNP_LASTUPDATE >= XVNP_UPDATEINTERVAL then
-        XVNP_LASTUPDATE = tick() 
+    -- Title Bar
+    local titleBar2 = Instance.new("Frame")
+    titleBar2.Name             = "TitleBar"
+    titleBar2.Parent           = frame2
+    titleBar2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    titleBar2.BorderSizePixel  = 0
+    titleBar2.Size             = UDim2.new(1, 0, 0, 28)
+    titleBar2.Position         = UDim2.new(0, 0, 0, 0)
+    titleBar2.Active           = true
 
-        local OpenAc_Connections = Lua_Fetch_Connections(Game_LogService_MessageOut)
+    local cornerTitle = Instance.new("UICorner")
+    cornerTitle.CornerRadius = UDim.new(0, 8)
+    cornerTitle.Parent       = titleBar2
 
-        for _, CONNECTION in OpenAc_Connections do
-            if not table.find(Current_Connections, CONNECTION) then
-                table.insert(Current_Connections, CONNECTION)
-                table.insert(Hooked_Connections, CONNECTION)
+    local icon2 = Instance.new("ImageLabel")
+    icon2.Name                   = "TitleIcon"
+    icon2.Parent                 = titleBar2
+    icon2.BackgroundTransparency = 1
+    icon2.Size                   = UDim2.new(0, 18, 0, 18)
+    icon2.Position               = UDim2.new(0, 6, 0, 6)
+    icon2.Image                  = "rbxassetid://95413852871898"
 
-                XVNP_L(CONNECTION)
-                
+    local titleText2 = Instance.new("TextLabel")
+    titleText2.Name                   = "TitleText"
+    titleText2.Parent                 = titleBar2
+    titleText2.BackgroundTransparency = 1
+    titleText2.Size                   = UDim2.new(1, -100, 1, 0)
+    titleText2.Position               = UDim2.new(0, 28, 0, 0)
+    titleText2.Text                   = "Administrator: Vanta Client"
+    titleText2.Font                   = Enum.Font.SourceSans
+    titleText2.TextColor3             = Color3.fromRGB(255, 255, 255)
+    titleText2.TextSize               = 16
+    titleText2.TextXAlignment         = Enum.TextXAlignment.Left
+
+    local closeButton2 = Instance.new("TextButton")
+    closeButton2.Name                   = "CloseButton"
+    closeButton2.Parent                 = titleBar2
+    closeButton2.Size                   = UDim2.new(0, 40, 0, 28)
+    closeButton2.Position               = UDim2.new(1, -40, 0, 0)
+    closeButton2.BackgroundTransparency = 1
+    closeButton2.Text                   = "X"
+    closeButton2.Font                   = Enum.Font.SourceSansBold
+    closeButton2.TextColor3             = Color3.fromRGB(255, 255, 255)
+    closeButton2.TextSize               = 18
+
+    local minimizeButton2 = Instance.new("TextButton")
+    minimizeButton2.Name                   = "MinimizeButton"
+    minimizeButton2.Parent                 = titleBar2
+    minimizeButton2.Size                   = UDim2.new(0, 40, 0, 28)
+    minimizeButton2.Position               = UDim2.new(1, -120, 0, 0)
+    minimizeButton2.BackgroundTransparency = 1
+    minimizeButton2.Text                   = "-"
+    minimizeButton2.Font                   = Enum.Font.SourceSansBold
+    minimizeButton2.TextColor3             = Color3.fromRGB(255, 255, 255)
+    minimizeButton2.TextSize               = 24
+
+    local maximizeButton2 = Instance.new("TextButton")
+    maximizeButton2.Name                   = "MaximizeButton"
+    maximizeButton2.Parent                 = titleBar2
+    maximizeButton2.Size                   = UDim2.new(0, 40, 0, 28)
+    maximizeButton2.Position               = UDim2.new(1, -80, 0, 0)
+    maximizeButton2.BackgroundTransparency = 1
+    maximizeButton2.Text                   = "▢"
+    maximizeButton2.Font                   = Enum.Font.SourceSansBold
+    maximizeButton2.TextColor3             = Color3.fromRGB(255, 255, 255)
+    maximizeButton2.TextSize               = 18
+
+    -- Dragging logic (unchanged)
+    do
+        local dragging, dragInput, dragStart, startPos
+        local function update(input)
+            local delta = input.Position - dragStart
+            frame2.Position = UDim2.new(
+                frame2.Position.X.Scale, startPos.X.Offset + delta.X,
+                frame2.Position.Y.Scale, startPos.Y.Offset + delta.Y
+            )
+        end
+        titleBar2.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                dragging  = true
+                dragStart = input.Position
+                startPos  = frame2.Position
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
             end
-        end
-    end
-end)
-
-local last_beat = 0
-Game_RunService.RenderStepped:Connect(function()
-    if last_beat + 1 < tick() then
-        last_beat = tick() + 1 
-
-        local what, are = auth_heart()
-
-        if not are or not what then
-            if good_check <= 0 then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            else
-                good_check -=1
+        end)
+        titleBar2.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement then
+                dragInput = input
             end
-        else
-            good_check += 1
-        end
-
-    end
-end)
-
-if getgenv().DEBUG then
-    print("[auth.injected.live] Started Emulation Thread")
-end
-
-if not LPH_OBFUSCATED then
-    LPH_JIT_MAX = function(...)
-        return (...)
-    end
-    LPH_NO_VIRTUALIZE = function(...)
-        return (...)
-    end
-end
-
-LPH_JIT_MAX(function()
--- // Variables (Too Lazy To Make It To One Local)
-local Arceus = getgenv().Arceus
-local OldSilentAimPart = Arceus.Silent.Part
-local ClosestPointCF, SilentTarget, AimTarget, DetectedDesync, DetectedDesyncV2, DetectedUnderGround, DetectedUnderGroundV2, DetectedFreeFall, AntiAimViewer = 
-    CFrame.new(), 
-    nil, 
-    nil, 
-    false, 
-    false, 
-    false, 
-    false, 
-    false, 
-    true
-local Script = {Functions = {}, Friends = {}, Drawing = {}, EspPlayers = {}}
-
-local Players, Client, Mouse, RS, Camera, GuiS, Uis, Ran =
-    game:GetService("Players"),
-    game:GetService("Players").LocalPlayer,
-    game:GetService("Players").LocalPlayer:GetMouse(),
-    game:GetService("RunService"),
-    game:GetService("Workspace").CurrentCamera,
-    game:GetService("GuiService"),
-    game:GetService("UserInputService"),
-    math.random
-
--- // Drawing For AimAssist And SilentAim
-Script.Drawing.SilentCircle = Drawing.new("Circle")
-Script.Drawing.SilentCircle.Color = Color3.new(1,1,1)
-Script.Drawing.SilentCircle.Thickness = 1
-
-Script.Drawing.AimAssistCircle = Drawing.new("Circle")
-Script.Drawing.AimAssistCircle.Color = Color3.new(1,1,1)
-Script.Drawing.AimAssistCircle.Thickness = 1
-
--- // Chat Check
-Client.Chatted:Connect(function(Msg)
-    if Msg == Arceus.Commands.CrashMode then
-        while true do end
-    end
-    local Splitted = string.split(Msg, " ")
-    if Splitted[1] and Splitted[2] and Arceus.Commands.Enabled then
-        if Splitted[1] == Arceus.Commands.Silent_Prediction then
-            Arceus.Silent.PredictionVelocity = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.Silent_Fov_Size then
-            Arceus.SilentFov.Radius = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.Silent_Fov_Show then
-            if Splitted[2] == "true" then
-                Arceus.SilentFov.Visible = true
-            else
-                Arceus.SilentFov.Visible = false
+        end)
+        UserInputService.InputChanged:Connect(function(input)
+            if dragging and input == dragInput then
+                update(input)
             end
-        elseif Splitted[1] == Arceus.Commands.Silent_Enabled then
-            if Splitted[2] == "true" then
-                Arceus.Silent.Enabled = true
-            else
-                Arceus.Silent.Enabled = false 
-            end
-        elseif Splitted[1] == Arceus.Commands.Silent_HitChance then
-            Arceus.Silent.HitChance = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.AimAssist_Prediction then
-            Arceus.AimAssist.PredictionVelocity = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.AimAssist_Fov_Size then
-            Arceus.AimAssistFov.Radius = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.AimAssist_Fov_Show then
-            if Splitted[2] == "true" then
-                Arceus.AimAssistFov.Visible = true
-            else
-                Arceus.AimAssistFov.Visible = false
-            end
-        elseif Splitted[1] == Arceus.Commands.AimAssist_Enabled then
-            if Splitted[2] == "true" then
-                Arceus.AimAssist.Enabled = true
-            else
-                Arceus.AimAssist.Enabled = false
-            end
-        elseif Splitted[1] == Arceus.Commands.AimAssist_SmoothX then
-            Arceus.AimAssist.Smoothness_X = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.AimAssist_SmoothY then
-            Arceus.AimAssist.Smoothness_Y = Splitted[2]
-        elseif Splitted[1] == Arceus.Commands.AimAssist_Shake then
-            Arceus.AimAssist.ShakeValue = Splitted[2]
+        end)
+    end
+
+    -- Minimize / Maximize / Close
+    local normalSize, normalVisible = frame2.Size, true
+    minimizeButton2.MouseButton1Click:Connect(function()
+        if normalVisible then
+            TweenService:Create(frame2, TweenInfo.new(0.2), {
+                Size = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, titleBar2.Size.Y.Offset)
+            }):Play()
+            maximizeButton2.Visible = true
+            normalVisible = false
         end
-    end
-end)
-
--- // KeyDown Check
-Mouse.KeyDown:Connect(function(Key)
-    local Keybind = Arceus.AimAssist.Key:lower()
-    if Key == Keybind then
-        if Arceus.AimAssist.Enabled then
-            IsTargetting = not IsTargetting
-            if IsTargetting then
-                Script.Functions.GetClosestPlayer2()
-            else
-                if AimTarget ~= nil then
-                    AimTarget = nil
-                    IsTargetting = false
-                end
-            end
+    end)
+    maximizeButton2.MouseButton1Click:Connect(function()
+        if not normalVisible then
+            TweenService:Create(frame2, TweenInfo.new(0.2), { Size = normalSize }):Play()
+            maximizeButton2.Visible = false
+            normalVisible = true
         end
-    end
-    local Keybind2 = Arceus.Silent.Keybind:lower()
-    if Key == Keybind2 and Arceus.Silent.UseKeybind then
-        Arceus.Silent.Enabled = not Arceus.Silent.Enabled
-        if Arceus.Both.SendNotification then
-            game.StarterGui:SetCore("SendNotification",{
-                Title = "Arceus.lol",
-                Text = "Silent Aim: " .. tostring(Arceus.Silent.Enabled),
-                Icon = "rbxassetid://12601056015",
-                Duration = 1
-            })
-        end
-    end
-    local Keybind3 = Arceus.Both.UnderGroundKey:lower()
-    if Key == Keybind3 and Arceus.Both.UseUnderGroundKeybind then
-        Arceus.Both.DetectUnderGround = not Arceus.Both.DetectUnderGround
-        if Arceus.Both.SendNotification then
-            game.StarterGui:SetCore("SendNotification",{
-                Title = "Arceus.lol",
-                Text = "UnderGround Resolver: " .. tostring(Arceus.Both.DetectUnderGround),
-                Icon = "rbxassetid://12601056015",
-                Duration = 1
-            })
-        end
-    end
-    local Keybind4 = Arceus.Both.DetectDesyncKey:lower()
-    if Key == Keybind4 and Arceus.Both.UsDetectDesyncKeybind then
-        Arceus.Both.DetectDesync = not Arceus.Both.DetectDesync
-        if Arceus.Both.SendNotification then
-            game.StarterGui:SetCore("SendNotification",{
-                Title = "Arceus.lol",
-                Text = "Desync Resolver: " .. tostring(Arceus.Both.DetectDesync),
-                Icon = "rbxassetid://12601056015",
-                Duration = 1
-            })
-        end
-    end
-    local Keybind5 = Arceus.Both.LayKeybind:lower()
-    if Key == Keybind5 and Arceus.Both.UseLay then
-        local Args = {
-            [1] = "AnimationPack",
-            [2] = "Lay"
-        }
-        game:GetService("ReplicatedStorage"):FindFirstChild("MainEvent"):FireServer(unpack(Args))
-    end
-    local Keybind6 = Arceus.Esp.EspKey:lower()
-    if Key == Keybind6 and Arceus.Esp.UseEspKeybind then
-		if Arceus.Esp.HoldMode then
-			Arceus.Esp.Enabled = true
-		else
-			Arceus.Esp.Enabled = not Arceus.Esp.Enabled
-		end
-    end
-end)
+    end)
+    closeButton2.MouseButton1Click:Connect(function()
+        screenGui2:Destroy()
+    end)
 
--- // KeyUp Check
-Mouse.KeyUp:Connect(function(Key)
-    local Keybind = Arceus.Esp.EspKey:lower()
-    if Key == Keybind and Arceus.Esp.UseEspKeybind and Arceus.Esp.HoldMode then
-		Arceus.Esp.Enabled = false
-    end
-    local Keybind2 = Arceus.AimAssist.Key:lower()
-    if Key == Keybind2 and Arceus.AimAssist.Enabled and Arceus.AimAssist.HoldMode then
-        IsTargetting = false
-		AimTarget = nil
-    end
-end)
+    -- ASCII & Key Labels
+    local textLabel2 = Instance.new("TextLabel")
+    textLabel2.Name                   = "MoozeASCII"
+    textLabel2.Parent                 = frame2
+    textLabel2.BackgroundTransparency = 1
+    textLabel2.Size                   = UDim2.new(1, 0, 0.8, 0)
+    textLabel2.Position               = UDim2.new(0.007, 0, -0.1, 0)
+    textLabel2.Font                   = Enum.Font.Code
+    textLabel2.Text                   =[[
+________   ____ ___  _____    ______________________ ___  _____   
+\_____  \ |    |   \/  _  \   \      \__    ___/    |   \/     \  
+ /  / \  \|    |   /  /_\  \  /   |   \|    |  |    |   /  \ /  \ 
+/   \_/.  \    |  /    |    \/    |    \    |  |    |  /    Y    \
+\_____\ \_/______/\____|__  /\____|__  /____|  |______/\____|__  /
+       \__>               \/         \/                        \/ 
+]]
+    textLabel2.TextColor3     = Color3.fromRGB(128, 128, 128)
+    textLabel2.TextSize       = 13
+    textLabel2.TextWrapped    = true
+    textLabel2.TextXAlignment = Enum.TextXAlignment.Center
+    textLabel2.TextYAlignment = Enum.TextYAlignment.Center
 
--- // Disabled If AntiAimViewer Is On
-if Arceus.Silent.AntiAimViewer then
-    AntiAimViewer = false
-else
-    AntiAimViewer = true
-end
+    local creditsLabel = Instance.new("TextLabel")
+    creditsLabel.Name                   = "CreditsLabel"
+    creditsLabel.Parent                 = frame2
+    creditsLabel.BackgroundTransparency = 1
+    creditsLabel.Size                   = UDim2.new(1, 0, 0, 20)
+    creditsLabel.Position               = UDim2.new(0, -180, 0, 150)
+    creditsLabel.Font                   = Enum.Font.Code
+    creditsLabel.Text                   = "Credits to me, nigga"
+    creditsLabel.TextColor3             = Color3.fromRGB(180, 180, 180)
+    creditsLabel.TextSize               = 12
+    creditsLabel.TextXAlignment         = Enum.TextXAlignment.Center
+    creditsLabel.TextYAlignment         = Enum.TextYAlignment.Center
 
--- // Blocks Mouse Triggering
-game:GetService("ContextActionService"):BindActionAtPriority(
-    "LeftMouseBlock",
-    function()
-        if AntiAimViewer == false and Arceus.Silent.AntiAimViewer and Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") then
-            return Enum.ContextActionResult.Sink
-        else
-            return Enum.ContextActionResult.Pass
-        end
-    end,
-    true,
-    Enum.ContextActionPriority.Low.Value,
-    Enum.UserInputType.MouseButton1
-)
+    local keyLabel2 = Instance.new("TextLabel")
+    keyLabel2.Name                   = "KeyLabel"
+    keyLabel2.Parent                 = frame2
+    keyLabel2.BackgroundTransparency = 1
+    keyLabel2.Position               = UDim2.new(0, 29, 0, 200)
+    keyLabel2.Size                   = UDim2.new(0.7, 0, 0.1, 0)
+    keyLabel2.Font                   = Enum.Font.Code
+    keyLabel2.RichText              = true
+    keyLabel2.TextColor3            = Color3.fromRGB(128, 128, 128)
+    keyLabel2.TextSize              = 12
+    keyLabel2.TextXAlignment        = Enum.TextXAlignment.Left
+    keyLabel2.TextYAlignment        = Enum.TextYAlignment.Center
 
--- // Delaying The Mouse Trigger
-Uis.InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType[Arceus.Silent.TriggerBotKey] and Arceus.Silent.UseTriggerBotKeybind then
-        Arceus.Silent.TriggerBot = true
-    end
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and Arceus.Silent.AntiAimViewer and Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") then
-        if AntiAimViewer == false then
-            AntiAimViewer = true
-            mouse1click()
-            RS.RenderStepped:Wait()
-            RS.RenderStepped:Wait()
-            mouse1press()
-            RS.RenderStepped:Wait()
-            RS.RenderStepped:Wait()
-            AntiAimViewer = false
-        end
-    end
-end)
+    -- Invisible TextBox to capture typing & paste
+    local inputBox = Instance.new("TextBox")
+    inputBox.Name                   = "InputBox"
+    inputBox.Parent                 = frame2
+    inputBox.BackgroundTransparency = 1
+    inputBox.TextTransparency       = 1
+    inputBox.ClearTextOnFocus       = false
+    inputBox.Text                   = ""
+    inputBox.Font                   = Enum.Font.Code
+    inputBox.TextSize               = 12
+    inputBox.Size                   = keyLabel2.Size
+    inputBox.Position               = keyLabel2.Position
+    inputBox.PlaceholderText        = ""
 
--- // Helps With Automatics
-Uis.InputEnded:connect(function(input)
-    if input.UserInputType == Enum.UserInputType[Arceus.Silent.TriggerBotKey] and Arceus.Silent.UseTriggerBotKeybind then
-        Arceus.Silent.TriggerBot = true
-    end
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and Arceus.Silent.AntiAimViewer and Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") then
-        if AntiAimViewer == false then
-            AntiAimViewer = true
-            mouse1click()
-            RS.RenderStepped:Wait()
-            RS.RenderStepped:Wait()
-            mouse1click()
-            RS.RenderStepped:Wait()
-            RS.RenderStepped:Wait()
-            AntiAimViewer = true
-        end
-    end
-end)
+    -- Player movement lock
+    local player    = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid  = character:WaitForChild("Humanoid")
+    local originalWalkSpeed = humanoid.WalkSpeed
+    local originalJumpPower = humanoid.JumpPower
 
--- // Checks If The Player Is Alive
-Script.Functions.Alive = LPH_NO_VIRTUALIZE(function(Plr)
-    if Plr and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and Plr.Character:FindFirstChild("Humanoid") ~= nil and Plr.Character:FindFirstChild("Head") ~= nil then
-        return true
-    end
-    return false
-end)
+    -- Auth variables
+    local typedKey         = ""
+    local cursorColor      = Color3.new(1,1,1)
+    local typedKeyColor    = Color3.new(0.5,0.5,0.5)
+    local underlineChar    = "▁"
+    local underlineLen     = 1
+    local blinkSpeed       = 0.5
+    local authDelay        = 3
+    local hideDelay        = 3
+    local showUnderline    = true
+    local canType          = false
+    local isAuthenticating = false
 
--- // Checks If Player Is On Your Screen
-Script.Functions.OnScreen = LPH_NO_VIRTUALIZE(function(Object)
-    local _, screen = Camera:WorldToScreenPoint(Object.Position)
-    return screen
-end)
-
--- // Gets Magnitude From Part Position And Mouse
-Script.Functions.GetMagnitudeFromMouse = LPH_NO_VIRTUALIZE(function(Part)
-    local PartPos, OnScreen = Camera:WorldToScreenPoint(Part.Position)
-    if OnScreen then
-        local Magnitude = (Vector2.new(PartPos.X, PartPos.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
-        return Magnitude
-    end
-    return math.huge
-end)
-
--- // Makes Random Number With Vector3 
-Script.Functions.RandomVec = LPH_NO_VIRTUALIZE(function(Number, Multi)
-    return (Vector3.new(Ran(-Number, Number), Ran(-Number, Number), Ran(-Number, Number)) * Multi or 1)
-end)
-
--- // Checks If The Player Is Behind A Wall Or Something Else
-Script.Functions.RayCastCheck = LPH_NO_VIRTUALIZE(function(Part, PartDescendant)
-    local Character = Client.Character or Client.CharacterAdded.Wait(Client.CharacterAdded)
-    local Origin = Camera.CFrame.Position
-
-    local RayCastParams = RaycastParams.new()
-    RayCastParams.FilterType = Enum.RaycastFilterType.Blacklist
-    RayCastParams.FilterDescendantsInstances = {Character, Camera}
-
-    local Result = Workspace.Raycast(Workspace, Origin, Part.Position - Origin, RayCastParams)
-    
-    if (Result) then
-        local PartHit = Result.Instance
-        local Visible = (not PartHit or Instance.new("Part").IsDescendantOf(PartHit, PartDescendant))
-        
-        return Visible
-    end
-    return false
-end)
-
--- // Gets The Part From An Object
-Script.Functions.GetParts = LPH_NO_VIRTUALIZE(function(Object)
-    if string.find(Object.Name, "Gun") then
-        return
-    end
-    if table.find({"Part", "MeshPart", "BasePart"}, Object.ClassName) then
-        return true
-    end
-end)
-
--- // Random Number To Compare
-Script.Functions.CalculateChance = LPH_NO_VIRTUALIZE(function(Percentage)
-    Percentage = math.floor(Percentage)
-    local chance = math.floor(Random.new().NextNumber(Random.new(), 0, 1) * 100) / 100
-
-    return chance < Percentage / 100
-end)
-
--- // Check If Crew Folder Is A Thing
-Script.Functions.FindCrew = LPH_NO_VIRTUALIZE(function(Player)
-	if Player:FindFirstChild("DataFolder") and Player.DataFolder:FindFirstChild("Information") and Player.DataFolder.Information:FindFirstChild("Crew") and Client:FindFirstChild("DataFolder") and Client.DataFolder:FindFirstChild("Information") and Client.DataFolder.Information:FindFirstChild("Crew") then
-        if Client.DataFolder.Information:FindFirstChild("Crew").Value ~= nil and Player.DataFolder.Information:FindFirstChild("Crew").Value ~= nil and Player.DataFolder.Information:FindFirstChild("Crew").Value ~= "" and Client.DataFolder.Information:FindFirstChild("Crew").Value ~= "" then 
-			return true
-		end
-	end
-	return false
-end)
-
--- // Splits The Gun Name And Splits []
-Script.Functions.GetGunName = LPH_NO_VIRTUALIZE(function(Name)
-    local split = string.split(string.split(Name, "[")[2], "]")[1]
-    return split
-end)
-
--- // Gets Current Gun
-Script.Functions.GetCurrentWeaponName = LPH_NO_VIRTUALIZE(function()
-    if Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") then
-       local Tool =  Client.Character:FindFirstChildWhichIsA("Tool")
-       if string.find(Tool.Name, "%[") and string.find(Tool.Name, "%]") and not string.find(Tool.Name, "Wallet") and not string.find(Tool.Name, "Phone") then
-          return Script.Functions.GetGunName(Tool.Name)
-       end
-    end
-    return nil
-end)
-
--- // Drawing Function With Property Attached
-Script.Functions.NewDrawing = LPH_NO_VIRTUALIZE(function(Type, Properties)
-    local NewDrawing = Drawing.new(Type)
-
-    for i,v in next, Properties or {} do
-        NewDrawing[i] = v
-    end
-    return NewDrawing
-end)
-
--- // Draws For The New Players Joining For Esp
-Script.Functions.NewPlayer = LPH_NO_VIRTUALIZE(function(Player)
-    Script.EspPlayers[Player] = {
-        Name = Script.Functions.NewDrawing("Text", {Color = Color3.fromRGB(255,2550, 255), Outline = true, Visible = false, Center = true, Size = 13, Font = 0}),
-        BoxOutline = Script.Functions.NewDrawing("Square", {Color = Color3.fromRGB(0, 0, 0), Thickness = 3, Visible = false}),
-        Box = Script.Functions.NewDrawing("Square", {Color = Color3.fromRGB(255, 255, 255), Thickness = 1, Visible = false}),
-        HealthBarOutline = Script.Functions.NewDrawing("Line", {Color = Color3.fromRGB(0, 0, 0), Thickness = 3, Visible = false}),
-        HealthBar = Script.Functions.NewDrawing("Line", {Color = Color3.fromRGB(0, 255, 0), Thickness = 1, Visible = false}),
-        HealthText = Script.Functions.NewDrawing("Text", {Color = Color3.fromRGB(0, 255, 0), Outline = true, Visible = false, Center = true, Size = 13, Font = 0}),
-        Distance = Script.Functions.NewDrawing("Text", {Color = Color3.fromRGB(255, 255, 255), Outline = true, Visible = false, Center = true, Size = 13, Font = 0})
+    local keyMap = {
+        Zero="0", One="1", Two="2", Three="3", Four="4", Five="5", Six="6",
+        -- etc...
     }
-end)
 
--- // Gets The Closest Part From Cursor
-Script.Functions.GetClosestBodyPart = LPH_NO_VIRTUALIZE(function(Char)
-    local Distance = math.huge
-    local ClosestPart = nil
-    local Filterd = {}
-
-    if not (Char and Char:IsA("Model")) then
-        return ClosestPart
+    -- Fixed formatLog with proper rgb()
+    local function formatLog(msg)
+        local ts = os.date("%Y-%m-%d %H:%M:%S")
+        return string.format(
+            "[  <font color='rgb(255,0,0)'>%s</font>  ] %s",
+            ts, msg
+        )
     end
 
-    local Parts = Char:GetChildren()
-    for _, v in pairs(Parts) do
-        if Script.Functions.GetParts(v) and Script.Functions.OnScreen(v) then
-            table.insert(Filterd, v)
-            for _, Part in pairs(Filterd) do                
-                local Magnitude = Script.Functions.GetMagnitudeFromMouse(Part)
-                if Magnitude < Distance then
-                    ClosestPart = Part
-                    Distance = Magnitude
-                end
+    -- Always‑runnable updateKeyLabel
+    local function updateKeyLabel()
+        local underline = showUnderline and string.rep(underlineChar, underlineLen) or ""
+        keyLabel2.Text = string.format(
+            '[<font color="rgb(255,0,0)">—</font>] Key: '..
+            '<font color="rgb(%d,%d,%d)">%s</font>'..
+            '<font color="rgb(%d,%d,%d)">%s</font>',
+            typedKeyColor.R*255, typedKeyColor.G*255, typedKeyColor.B*255, typedKey,
+            cursorColor.R*255,    cursorColor.G*255,    cursorColor.B*255,    underline
+        )
+    end
+
+    -- Blink cursor
+    task.spawn(function()
+        while true do
+            if not isAuthenticating then
+                showUnderline = not showUnderline
+                updateKeyLabel()
             end
+            wait(blinkSpeed)
         end
-    end
-    return ClosestPart
-end)
-
--- // Gets The Closest Point From Cursor
-Script.Functions.GetClosestPointOfPart = LPH_NO_VIRTUALIZE(function(Part)
-    local NearestPosition = nil
-    if Part ~= nil then
-        local Hit, Half = Mouse.Hit.Position, Part.Size * 0.5
-        local Transform = Part.CFrame:PointToObjectSpace(Mouse.Hit.Position)
-        NearestPosition = Part.CFrame * Vector3.new(math.clamp(Transform.X, -Half.X, Half.X),math.clamp(Transform.Y, -Half.Y, Half.Y),math.clamp(Transform.Z, -Half.Z, Half.Z))
-    end
-    return NearestPosition
-end)
-
--- if not getgenv().directory then
---     game.Players.LocalPlayer:Kick("Script directory was not found!\nNOTE: THE SERVER MAY BE DOWN \nplease dm 1catlol if you have entered yours correctly")
---     wait(3)
---     game.Players.LocalPlayer:Destroy()
---     return LPH_CRASH()
--- end
-
--- hookfunction security
-    local exe_name, exe_version = identifyexecutor()
-    local function home999() end
-    local function home888() end
-
-    if exe_name ~= "Wave Windows" then
-        hookfunction(home888, home999)
-        if isfunctionhooked(home888) == false then
-            game.Players.LocalPlayer:Destroy()
-            return LPH_CRASH()
-        end
-    end 
-    
-    local function check_env(env)
-        for _, func in env do
-            if type(func) ~= "function" then
-                continue
-            end
-
-            local functionhook = isfunctionhooked(func)
-
-            if functionhook then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            end
-        end
-    end
-
-    check_env( getgenv() )
-    check_env( getrenv() )
---
-
-local Lua_Fetch_Connections = getconnections
-local Lua_Fetch_Upvalues = getupvalues
-local Lua_Hook = hookfunction 
-local Lua_Hook_Method = hookmetamethod
-local Lua_Unhook = restorefunction
-local Lua_Replace_Function = replaceclosure
-local Lua_Set_Upvalue = setupvalue
-local Lua_Clone_Function = clonefunction
-
-local Game_RunService = game:GetService("RunService")
-local Game_LogService = game:GetService("LogService")
-local Game_LogService_MessageOut = Game_LogService.MessageOut
-
-local String_Lower = string.lower
-local Table_Find = table.find
-local Get_Type = type
-
-local Current_Connections = {};
-local Hooked_Connections = {};
-
-local function Test_Table(Table, Return_Type)
-    for TABLE_INDEX, TABLE_VALUE in Table do
-        if type(TABLE_VALUE) == String_Lower(Return_Type) then
-            return TABLE_VALUE, TABLE_INDEX
-        end
-
-        continue
-    end
-end
-
-local function Print_Table(Table)
-    table.foreach(Table, print)
-end
-
-if getgenv().DEBUG then
-    print("[auth.injected.live] Waiting...")
-end
-
-local good_check = 0
-
-function auth_heart()
-    -- local avalible = pcall(function() return loadstring(game:HttpGet("https://auth.injected.live/" .. directory))() end)
-    
-    -- if (not avalible or not game:HttpGet("https://auth.injected.live/" .. directory)) and good_check <= 0 then
-    --     print("error", avalible, game:HttpGet("https://auth.injected.live/" .. directory))
-    --     game.Players.LocalPlayer:Destroy()
-    --     return LPH_CRASH()
-    -- end
-
-    return true , true
-end
-
-function Lua_Common_Intercept(old, ...)
-    print(...)
-    return old(...)
-end
-
-function XVNP_L(CONNECTION)
-    local s, e = pcall(function()
-        local OPENAC_TABLE = Lua_Fetch_Upvalues(CONNECTION.Function)[9]
-        local OPENAC_FUNCTION = OPENAC_TABLE[1]
-        local IGNORED_INDEX = {3, 12, 1, 11, 15, 8, 20, 18, 22}
-
-        --[[
-            3(Getfenv), 1(create thread), 12(Some thread function errors btw), 11( buffer (BANS YOU) ), 8(BXOR), 14(WRAP), 15(YIELD), 22(JUNK), 20(Setfenv), 18(Idk for now)
-        ]]
-
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 14, function(...)
-            return function(...)
-                local args = {...}
-
-                if type(args[1]) == "table" and args[1][1] then
-                    pcall(function()
-                        if type(args[1][1]) == "userdata" then
-                            args[1][1]:Disconnect()
-                            args[1][2]:Disconnect()
-                            args[1][3]:Disconnect()
-                            args[1][4]:Disconnect()
-                            --warn("[XVNP] DISCONNECTING CURRENT FUNCTIONS")
-                        end
-
-                        --Print_Table(args[1])
-                    end)
-                end 
-            end
-        end)
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 1, function(...)
-            task.wait(200)
-        end)
-
-        hookfunction(OPENAC_FUNCTION, function(...)
-            --warn("[XVNP DEBUG]", ...)
-            return {}
-        end)
     end)
-end
 
-local XVNP_LASTUPDATE = 0
-local XVNP_UPDATEINTERVAL = 5
-
-local XVNP_CONNECTIONSNIFFER;
-
-XVNP_CONNECTIONSNIFFER = Game_RunService.RenderStepped:Connect(function()
-    if #Lua_Fetch_Connections(Game_LogService_MessageOut) >= 2 then
-        --print("[XVNP] !Emulator overflow!")
-        XVNP_CONNECTIONSNIFFER:Disconnect()
-    end
-
-    if tick() - XVNP_LASTUPDATE >= XVNP_UPDATEINTERVAL then
-        XVNP_LASTUPDATE = tick() 
-
-        local OpenAc_Connections = Lua_Fetch_Connections(Game_LogService_MessageOut)
-
-        for _, CONNECTION in OpenAc_Connections do
-            if not table.find(Current_Connections, CONNECTION) then
-                table.insert(Current_Connections, CONNECTION)
-                table.insert(Hooked_Connections, CONNECTION)
-
-                XVNP_L(CONNECTION)
-                
+    -- Fade helper
+    local function fadeOutFrame(frame, duration)
+        for _, obj in ipairs(frame:GetDescendants()) do
+            local prop = obj:IsA("Frame") and "BackgroundTransparency"
+                      or obj:IsA("TextLabel") and "TextTransparency"
+                      or obj:IsA("TextButton") and "TextTransparency"
+                      or obj:IsA("ImageLabel") and "ImageTransparency"
+            if prop then
+                TweenService:Create(obj, TweenInfo.new(duration), {[prop] = 1}):Play()
             end
         end
-    end
-end)
-
-local last_beat = 0
-Game_RunService.RenderStepped:Connect(function()
-    if last_beat + 1 < tick() then
-        last_beat = tick() + 1 
-
-        local what, are = auth_heart()
-
-        if not are or not what then
-            if good_check <= 0 then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            else
-                good_check -=1
-            end
-        else
-            good_check += 1
-        end
-
-    end
-end)
-
-if getgenv().DEBUG then
-    print("[auth.injected.live] Started Emulation Thread")
-end
-
--- // Gets The Closest Player For Cursor (Silent Aim)
-Script.Functions.GetClosestPlayer = LPH_NO_VIRTUALIZE(function()
-    local Target = nil
-    local Closest = math.huge
-    local HitChance = Script.Functions.CalculateChance(Arceus.Silent.HitChance)
-
-    if not HitChance then
-        return nil
-    end
-    for _, v in pairs(Players:GetPlayers()) do
-        if v.Character and v ~= Client and v.Character:FindFirstChild("HumanoidRootPart") then
-            if not Script.Functions.OnScreen(v.Character.HumanoidRootPart) then 
-                continue 
-            end
-            if Arceus.Silent.WallCheck and not Script.Functions.RayCastCheck(v.Character.HumanoidRootPart, v.Character) then 
-                continue 
-            end
-            if Arceus.Silent.CheckIf_KO and v.Character:FindFirstChild("BodyEffects") then
-                local KoCheck = v.Character.BodyEffects:FindFirstChild("K.O").Value
-                local Grabbed = v.Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
-                if KoCheck or Grabbed then
-                    continue
-                end
-            end
-            if Arceus.Silent.CheckIf_TargetDeath and v.Character:FindFirstChild("Humanoid") then
-                if v.Character.Humanoid.health < 4 then
-                    continue
-                end
-            end
-            if Arceus.Both.VisibleCheck and v.Character:FindFirstChild("Head") then
-                if v.Character.Head.Transparency > 0.5 then
-                    continue
-                end
-            end
-            if Arceus.Both.CrewCheck and Script.Functions.FindCrew(v) and v.DataFolder.Information:FindFirstChild("Crew").Value == Client.DataFolder.Information:FindFirstChild("Crew").Value then
-                continue
-            end
-            if Arceus.Both.TeamCheck then
-                if v.Team ~= Client.Team then
-                    continue
-                end
-            end
-            if Arceus.Both.FriendCheck then
-                if not table.find(Script.Friends, v.UserId) then
-                    continue
-                end
-            end
-            local Distance = Script.Functions.GetMagnitudeFromMouse(v.Character.HumanoidRootPart)
-
-            if (Distance < Closest and Script.Drawing.SilentCircle.Radius + 10 > Distance) then
-                Closest = Distance
-                Target = v
-            end
-        end
+        TweenService:Create(frame, TweenInfo.new(duration), { BackgroundTransparency = 1 }):Play()
     end
 
-    SilentTarget = Target
-end)
-
--- // Gets Closest Player From Mouse (AimAssist)
-Script.Functions.GetClosestPlayer2 = LPH_NO_VIRTUALIZE(function()
-    local Target = nil
-    local Distance = nil
-    local Closest = math.huge
-    
-    for _, v in pairs(Players:GetPlayers()) do
-        if v.Character and v ~= Client and v.Character:FindFirstChild("HumanoidRootPart") then
-            if not Script.Functions.OnScreen(v.Character.HumanoidRootPart) then 
-                continue 
-            end
-            if Arceus.AimAssist.WallCheck and not Script.Functions.RayCastCheck(v.Character.HumanoidRootPart, v.Character) then 
-                continue 
-            end
-            local Distance = Script.Functions.GetMagnitudeFromMouse(v.Character.HumanoidRootPart)
-
-            if Distance < Closest then
-                if (Arceus.AimAssist.UseCircleRadius and Script.Drawing.AimAssistCircle.Radius + 10 < Distance) then continue end
-                Closest = Distance
-                Target = v
-            end
-        end
-    end
-
-    if Script.Functions.Alive(Target) then
-		if Arceus.Both.VisibleCheck then
-			if Target.Character.Head.Transparency > 0.5 then
-				return nil
-			end
-		end
-		if Arceus.Both.CrewCheck and Script.Functions.FindCrew(Target) and Target.DataFolder.Information:FindFirstChild("Crew").Value == Client.DataFolder.Information:FindFirstChild("Crew").Value then
-			return nil
-		end
-	end
-    if Arceus.Both.TeamCheck and Target then
-        if Target.Team == Client.Team then
-            return nil
-        end
-    end
-    if Arceus.Both.FriendCheck then
-        if table.find(Script.Friends, Target.UserId) then
-            return nil
-        end
-    end
-    
-    AimTarget = Target
-end)
-
--- // Server Side Mouse Position Changer
-local OldIndex = nil 
-OldIndex = hookmetamethod(game, "__index", LPH_NO_VIRTUALIZE(function(self, Index)
-    if not checkcaller() and Mouse and self == Mouse and Index == "Hit" and Arceus.Silent.Enabled and AntiAimViewer then
-        if Script.Functions.Alive(SilentTarget) and Players[tostring(SilentTarget)].Character:FindFirstChild(Arceus.Silent.Part) then
-            local EndPoint = nil
-            local TargetCF = nil
-            local TargetVel = Players[tostring(SilentTarget)].Character.HumanoidRootPart.Velocity
-            local TargetMov = Players[tostring(SilentTarget)].Character.Humanoid.MoveDirection
-
-            if Arceus.Silent.ClosestPoint then
-                TargetCF = ClosestPointCF
-            else
-                TargetCF = Players[tostring(SilentTarget)].Character[Arceus.Silent.Part].CFrame
-            end
-
-            if Arceus.Both.DetectDesync then
-                local Magnitude = TargetVel.magnitude
-                local Magnitude2 = TargetMov.magnitude
-                if Magnitude > Arceus.Both.DesyncDetection then
-                    DetectedDesync = true
-                elseif Magnitude < 1 and Magnitude2 > 0.01 then
-                    DetectedDesync = true
-                elseif Magnitude > 5 and Magnitude2 < 0.01 then
-                    DetectedDesync = true
-                else
-                    DetectedDesync = false
-                end
-            else
-                DetectedDesync = false
-            end
-            if Arceus.Silent.AntiGroundShots then
-                if TargetVel.Y < Arceus.Silent.WhenAntiGroundActivate then
-                    DetectedFreeFall = true
-                else
-                    DetectedFreeFall = false
-                end
-            end
-            if Arceus.Both.DetectUnderGround then 
-                if TargetVel.Y < Arceus.Both.UnderGroundDetection then            
-                    DetectedUnderGround = true
-                else
-                    DetectedUnderGround = false
-                end
-            else
-                DetectedUnderGround = false
-            end
-            
-            if TargetCF ~= nil then
-                if DetectedDesync then
-                    local MoveDirection = TargetMov * 16
-                    EndPoint = TargetCF + (MoveDirection * Arceus.Silent.PredictionVelocity)
-                elseif DetectedUnderGround then
-                    EndPoint = TargetCF + (Vector3.new(TargetVel.X, 0, TargetVel.Z) * Arceus.Silent.PredictionVelocity)
-                elseif DetectedFreeFall then
-                    EndPoint = TargetCF + (Vector3.new(TargetVel.X, (TargetVel.Y * Arceus.Silent.AntiGroundValue), TargetVel.Z) * Arceus.Silent.PredictionVelocity)
-                elseif Arceus.Silent.PredictMovement then
-                    EndPoint = TargetCF + (Vector3.new(TargetVel.X, (TargetVel.Y * 0.5), TargetVel.Z) * Arceus.Silent.PredictionVelocity)
-                else
-                    EndPoint = TargetCF
-                end
-                if Arceus.Silent.Humanize then
-                    local HumanizeValue = Arceus.Silent.HumanizeValue 
-                    EndPoint = (EndPoint + Script.Functions.RandomVec(HumanizeValue, 0.01))
-                end
-            end
-
-            if EndPoint ~= nil then
-                return (Index == "Hit" and EndPoint)
-            end
-        end
-    end
-    return OldIndex(self, Index)
-end))
-
--- if not getgenv().directory then
---     game.Players.LocalPlayer:Kick("Script directory was not found!\nNOTE: THE SERVER MAY BE DOWN \nplease dm 1catlol if you have entered yours correctly")
---     wait(3)
---     game.Players.LocalPlayer:Destroy()
---     return LPH_CRASH()
--- end
-
--- hookfunction security
-    local exe_name, exe_version = identifyexecutor()
-    local function home999() end
-    local function home888() end
-
-    if exe_name ~= "Wave Windows" then
-        hookfunction(home888, home999)
-        if isfunctionhooked(home888) == false then
-            game.Players.LocalPlayer:Destroy()
-            return LPH_CRASH()
-        end
-    end 
-    
-    local function check_env(env)
-        for _, func in env do
-            if type(func) ~= "function" then
-                continue
-            end
-
-            local functionhook = isfunctionhooked(func)
-
-            if functionhook then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            end
-        end
-    end
-
-    check_env( getgenv() )
-    check_env( getrenv() )
---
-
-local Lua_Fetch_Connections = getconnections
-local Lua_Fetch_Upvalues = getupvalues
-local Lua_Hook = hookfunction 
-local Lua_Hook_Method = hookmetamethod
-local Lua_Unhook = restorefunction
-local Lua_Replace_Function = replaceclosure
-local Lua_Set_Upvalue = setupvalue
-local Lua_Clone_Function = clonefunction
-
-local Game_RunService = game:GetService("RunService")
-local Game_LogService = game:GetService("LogService")
-local Game_LogService_MessageOut = Game_LogService.MessageOut
-
-local String_Lower = string.lower
-local Table_Find = table.find
-local Get_Type = type
-
-local Current_Connections = {};
-local Hooked_Connections = {};
-
-local function Test_Table(Table, Return_Type)
-    for TABLE_INDEX, TABLE_VALUE in Table do
-        if type(TABLE_VALUE) == String_Lower(Return_Type) then
-            return TABLE_VALUE, TABLE_INDEX
-        end
-
-        continue
-    end
-end
-
-local function Print_Table(Table)
-    table.foreach(Table, print)
-end
-
-if getgenv().DEBUG then
-    print("[auth.injected.live] Waiting...")
-end
-
-local good_check = 0
-
-function auth_heart()
-    -- local avalible = pcall(function() return loadstring(game:HttpGet("https://auth.injected.live/" .. directory))() end)
-    
-    -- if (not avalible or not game:HttpGet("https://auth.injected.live/" .. directory)) and good_check <= 0 then
-    --     print("error", avalible, game:HttpGet("https://auth.injected.live/" .. directory))
-    --     game.Players.LocalPlayer:Destroy()
-    --     return LPH_CRASH()
-    -- end
-
-    return true , true
-end
-
-function Lua_Common_Intercept(old, ...)
-    print(...)
-    return old(...)
-end
-
-function XVNP_L(CONNECTION)
-    local s, e = pcall(function()
-        local OPENAC_TABLE = Lua_Fetch_Upvalues(CONNECTION.Function)[9]
-        local OPENAC_FUNCTION = OPENAC_TABLE[1]
-        local IGNORED_INDEX = {3, 12, 1, 11, 15, 8, 20, 18, 22}
-
-        --[[
-            3(Getfenv), 1(create thread), 12(Some thread function errors btw), 11( buffer (BANS YOU) ), 8(BXOR), 14(WRAP), 15(YIELD), 22(JUNK), 20(Setfenv), 18(Idk for now)
-        ]]
-
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 14, function(...)
-            return function(...)
-                local args = {...}
-
-                if type(args[1]) == "table" and args[1][1] then
-                    pcall(function()
-                        if type(args[1][1]) == "userdata" then
-                            args[1][1]:Disconnect()
-                            args[1][2]:Disconnect()
-                            args[1][3]:Disconnect()
-                            args[1][4]:Disconnect()
-                            --warn("[XVNP] DISCONNECTING CURRENT FUNCTIONS")
-                        end
-
-                        --Print_Table(args[1])
-                    end)
-                end 
-            end
-        end)
-
-        Lua_Set_Upvalue(OPENAC_FUNCTION, 1, function(...)
-            task.wait(200)
-        end)
-
-        hookfunction(OPENAC_FUNCTION, function(...)
-            --warn("[XVNP DEBUG]", ...)
-            return {}
-        end)
+    -- Update on every keystroke or paste
+    inputBox:GetPropertyChangedSignal("Text"):Connect(function()
+        typedKey = inputBox.Text
+        updateKeyLabel()
     end)
+
+    -- Handle focus events on the hidden TextBox
+    inputBox.Focused:Connect(function()
+        canType = true
+        typedKey = inputBox.Text
+        humanoid.WalkSpeed = 0
+        humanoid.JumpPower = 0
+        updateKeyLabel()
+    end)
+
+    inputBox.FocusLost:Connect(function(enterPressed)
+        canType = false
+        humanoid.WalkSpeed = originalWalkSpeed
+        humanoid.JumpPower = originalJumpPower
+        typedKey = inputBox.Text
+        updateKeyLabel()
+
+        if enterPressed then
+            if typedKey == correctKey then
+                isAuthenticating = true
+                keyLabel2.Text = '[<font color="rgb(255,0,0)">-</font>] Authenticating Your <font color="rgb(255,0,0)">Vanta Client</font> Key...'
+                wait(authDelay)
+                repeat task.wait() until otherThingLoaded
+                keyLabel2.Text = '[<font color="rgb(255,0,0)">-</font>] Hiding <font color="rgb(255,0,0)">Vanta Client</font> Console From The Game <font color="rgb(255,0,0)">3.00</font> seconds'
+                wait(hideDelay)
+
+                -- Log sequence
+                local logs = {}
+                local function addLog(m)
+                    table.insert(logs, formatLog(m))
+                    keyLabel2.Text = table.concat(logs, "\n")
+                end
+
+                addLog("PID: "..pid.." Found")
+                wait(1)
+                addLog("Waiting for Your Game To be Loaded.")
+                wait(1)
+                addLog("Your Game is Now Loaded.")
+                wait(3)
+                addLog("Vanta Client Fully Injected!")
+                wait(1)
+
+                fadeOutFrame(frame2, 2)
+                wait(2)
+                screenGui2:Destroy()
+
+                accessGranted = true
+            else
+                keyLabel2.Text = '[<font color="rgb(255,0,0)">-</font>] Your Vanta Client Key is Invalid'
+                wait(3)
+                inputBox.Text = ""
+                typedKey = ""
+                updateKeyLabel()
+                canType = true
+                inputBox:CaptureFocus()
+            end
+        end
+    end)
+
+    -- Click to focus/unfocus the hidden TextBox
+    UserInputService.InputBegan:Connect(function(input, processed)
+        if processed then return end
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            local mpos     = input.Position
+            local kpPos    = keyLabel2.AbsolutePosition
+            local kpSize   = keyLabel2.AbsoluteSize
+            local insideX  = mpos.X >= kpPos.X and mpos.X <= kpPos.X + kpSize.X
+            local insideY  = mpos.Y >= kpPos.Y and mpos.Y <= kpPos.Y + kpSize.Y
+
+            if insideX and insideY then
+                inputBox:CaptureFocus()
+            else
+                if canType then
+                    inputBox:ReleaseFocus()
+                end
+            end
+        end
+    end)
+
+    -- Initialize
+    updateKeyLabel()
+    repeat task.wait() until accessGranted
+
+    -- Signal that the intro is done
+    introFinishedEvent:Fire()
 end
 
-local XVNP_LASTUPDATE = 0
-local XVNP_UPDATEINTERVAL = 5
+-- Start the console intro
+task.spawn(showConsole)
 
-local XVNP_CONNECTIONSNIFFER;
+introFinishedEvent.Event:Connect(function()
 
-XVNP_CONNECTIONSNIFFER = Game_RunService.RenderStepped:Connect(function()
-    if #Lua_Fetch_Connections(Game_LogService_MessageOut) >= 2 then
-        --print("[XVNP] !Emulator overflow!")
-        XVNP_CONNECTIONSNIFFER:Disconnect()
-    end
 
-    if tick() - XVNP_LASTUPDATE >= XVNP_UPDATEINTERVAL then
-        XVNP_LASTUPDATE = tick() 
+-- SERVICES
+local Players           = game:GetService("Players")
+local RunService        = game:GetService("RunService")
+local GuiService        = game:GetService("GuiService")
+local Camera            = workspace.CurrentCamera
+local UserInputService  = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-        local OpenAc_Connections = Lua_Fetch_Connections(Game_LogService_MessageOut)
+local Client = Players.LocalPlayer
+local Mouse  = Client:GetMouse()
 
-        for _, CONNECTION in OpenAc_Connections do
-            if not table.find(Current_Connections, CONNECTION) then
-                table.insert(Current_Connections, CONNECTION)
-                table.insert(Hooked_Connections, CONNECTION)
+local Krylon    = getgenv().Krylon
+local SilentAim = Krylon["Silent Aim"]
+local RangeCfg  = Krylon["Range"] or {}
+local silentRange = RangeCfg["Silent Aim"] or math.huge
 
-                XVNP_L(CONNECTION)
-                
-            end
-        end
-    end
-end)
+-- DRAW FOV
+local SilentCircle = Drawing.new("Circle")
+SilentCircle.Thickness    = 1
+SilentCircle.Transparency = 1
+SilentCircle.Color        = Color3.new(1, 1, 1)
 
-local last_beat = 0
-Game_RunService.RenderStepped:Connect(function()
-    if last_beat + 1 < tick() then
-        last_beat = tick() + 1 
-
-        local what, are = auth_heart()
-
-        if not are or not what then
-            if good_check <= 0 then
-                game.Players.LocalPlayer:Destroy()
-                return LPH_CRASH()
-            else
-                good_check -=1
-            end
-        else
-            good_check += 1
-        end
-
+RunService.RenderStepped:Connect(function()
+    if not SilentAim or not Mouse then return end
+    local fov = SilentAim.Fov or {}
+    SilentCircle.Visible = fov.Enabled and fov["Show Fov"]
+    if fov.Enabled then
+        SilentCircle.Radius   = math.clamp((fov.Value or 0) * 12, 0, 1000)
+        SilentCircle.Position = Vector2.new(Mouse.X, Mouse.Y + GuiService:GetGuiInset().Y)
     end
 end)
 
-if getgenv().DEBUG then
-    print("[auth.injected.live] Started Emulation Thread")
+-- GAME-SPECIFIC SETTINGS (truncated for brevity, use your full table)
+local Games = {
+    DaHood = {
+    ID = 132849360076451,
+    Details = {
+      Name = "Da Hood",
+      Argument = "UpdateMousePosI2",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DaHoodMacro = {
+    ID = 16033173781,
+    Details = {
+      Name = "Da Hood Macro",
+      Argument = "UpdateMousePosI2",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DaHoodVC = {
+    ID = 7213786345,
+    Details = {
+      Name = "Da Hood VC",
+      Argument = "UpdateMousePosI",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    HoodCustoms = {
+    ID = 9825515356,
+    Details = {
+      Name = "Hood Customs",
+      Argument = "MousePosUpdate",
+      Remote = "MainEvent"
+    }
+    },
+    HoodModded = {
+    ID = 5602055394,
+    Details = {
+      Name = "Hood Modded",
+      Argument = "MousePos",
+      Remote = "Bullets"
+    }
+    },
+    DaDownhillPSXbox = {
+    ID = 77369032494150,
+    Details = {
+      Name = "Da Downhill [PS/Xbox]",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    DaBank = {
+    ID = 132023669786646,
+    Details = {
+      Name = "Da Bank",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    DaUphill = {
+    ID = 84366677940861,
+    Details = {
+      Name = "Da Uphill",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    DaHoodBotAimTrainer = {
+    ID = 14487637618,
+    Details = {
+      Name = "Da Hood Bot Aim Trainer",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    HoodAimTrainer1v1 = {
+    ID = 11143225577,
+    Details = {
+      Name = "1v1 Hood Aim Trainer",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent"
+    }
+    },
+    HoodAim = {
+    ID = 14413712255,
+    Details = {
+      Name = "Hood Aim",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    MoonHood = {
+    ID = 14472848239,
+    Details = {
+      Name = "Moon Hood",
+      Argument = "MoonUpdateMousePos",
+      Remote = "MainEvent"
+    }
+    },
+    DaStrike = {
+    ID = 15186202290,
+    Details = {
+      Name = "Da Strike",
+      Argument = "MOUSE",
+      Remote = "MAINEVENT"
+    }
+    },
+    OGDaHood = {
+    ID = 17319408836,
+    Details = {
+      Name = "OG Da Hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DahAimTrainner = {
+    ID = 12804651854,
+    Details = {
+      Name = "DahAimTrainner",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    MekoHood = {
+    ID = 17780567699,
+    Details = {
+      Name = "Meko Hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DaCraft = {
+    ID = 128258288926907,
+    Details = {
+      Name = "Da Craft",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    NewHood = {
+    ID = 17809101348,
+    Details = {
+      Name = "New Hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    NewHood2 = {
+    ID = 99991590066512,
+    Details = {
+      Name = "New Hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    MayHood = {
+    ID = 77852114927492,
+    Details = {
+      Name = "may Hood",
+      Argument = "UpdateMousePosI2",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DeeHood = {
+    ID = 102372656720272,
+    Details = {
+      Name = "Dee Hood",
+      Argument = "UpdateMousePosI",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DerHood = {
+    ID = 138293393214382,
+    Details = {
+      Name = "Der Hood",
+      Argument = "DERHOODMOUSEPOS666^",
+      Remote = "MainRemoteEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    ARhood = {
+    ID = 98930372136494,
+    Details = {
+      Name = "AR hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    OGDahood = {
+    ID = 76565633209271,
+    Details = {
+      Name = "OG da hood",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DelHoodAim = {
+    ID = 88582222971530,
+    Details = {
+      Name = "Del Hood Aim",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    },
+    DaKitty = {
+    ID = 113357850268933,
+    Details = {
+      Name = "Da kitty",
+      Argument = "UpdateMousePos",
+      Remote = "MainEvent",
+      BodyEffects = "K.O"
+    }
+    }
+    }
+
+local gameSettings
+for _, gameData in pairs(Games) do
+    if gameData.ID == game.PlaceId then
+        gameSettings = gameData.Details
+        break
+    end
 end
 
--- // Silent Aim Misc
-Script.Functions.SilentMisc = LPH_NO_VIRTUALIZE(function()
-    if Arceus.Silent.Enabled and Script.Functions.Alive(SilentTarget) then
-        if Arceus.Silent.UseAirPart then
-            if SilentTarget.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall then
-                   Arceus.Silent.Part = Arceus.Silent.AirPart
-            else
-                Arceus.Silent.Part = OldSilentAimPart
+if not gameSettings then
+    Client:Kick("Unsupported game.")
+    return
+end
+
+local RemoteEventName = gameSettings.Remote or "MainEvent"
+local RemoteArgument  = gameSettings.Argument or "UpdateMousePos"
+local MainEvent       = ReplicatedStorage:FindFirstChild(RemoteEventName)
+if not MainEvent then
+    Client:Kick("Remote not found")
+    return
+end
+
+-- UTILITIES
+local function hasCheck(name)
+    for _, v in ipairs(SilentAim.Checks or {}) do
+        if tostring(v):lower() == name:lower() then
+            return true
+        end
+    end
+    return false
+end
+
+local function WallCheck(pos, ignoreList)
+    if hasCheck("Wall") then
+        local origin = Camera.CFrame.Position
+        local dir = pos - origin
+        return workspace:FindPartOnRayWithIgnoreList(Ray.new(origin, dir.Unit * dir.Magnitude), ignoreList) == nil
+    end
+    return true
+end
+
+local function CustomChecks(plr)
+    local ch = plr.Character
+    if not ch then return false end
+
+    if hasCheck("Knocked") then
+        local ko = ch:FindFirstChild("BodyEffects")
+        if ko and ko:FindFirstChild("K.O") and ko["K.O"].Value then
+            return false
+        end
+    end
+
+    if hasCheck("Grabbed") then
+        local g = ch:FindFirstChild("Grabbed")
+        if g and g.Value then
+            return false
+        end
+    end
+
+    if hasCheck("Vehicle") then
+        if ch:FindFirstChildOfClass("VehicleSeat") then
+            return false
+        end
+    end
+
+    return true
+end
+
+-- TARGETING
+local function GetClosest()
+    local best, tgt = math.huge, nil
+    local camPos = Camera.CFrame.Position
+
+    for _, plr in pairs(Players:GetPlayers()) do
+        if plr ~= Client and plr.Character then
+            local hrp = plr.Character:FindFirstChild("HumanoidRootPart")
+            if hrp and (hrp.Position - camPos).Magnitude <= silentRange then
+                local p2, onScreen = Camera:WorldToScreenPoint(hrp.Position)
+                local screenPos = Vector2.new(p2.X, p2.Y + GuiService:GetGuiInset().Y)
+                local mousePos  = Vector2.new(Mouse.X, Mouse.Y + GuiService:GetGuiInset().Y)
+                local dist2D    = (screenPos - mousePos).Magnitude
+
+                if onScreen and dist2D <= ((SilentAim.Fov.Value or 0) * 12) and dist2D < best and
+                   WallCheck(hrp.Position, {Client.Character, plr.Character}) and CustomChecks(plr) then
+                    best, tgt = dist2D, plr
+                end
             end
         end
-        if Arceus.Silent.TriggerBot then
-			mouse1click()
-		end
     end
-     if Arceus.Silent.AutoPrediction then
-        local ping = math.floor(game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue())
-        if ping < 10 then
-            Arceus.Silent.PredictionVelocity = 0.07
-        elseif ping < 20 then
-            Arceus.Silent.PredictionVelocity = 0.155
-        elseif ping < 30 then
-            Arceus.Silent.PredictionVelocity = 0.132
-        elseif ping < 40 then
-            Arceus.Silent.PredictionVelocity = 0.136
-        elseif ping < 50 then
-            Arceus.Silent.PredictionVelocity = 0.130
-        elseif ping < 60 then
-            Arceus.Silent.PredictionVelocity = 0.136
-        elseif ping < 70 then
-            Arceus.Silent.PredictionVelocity = 0.138
-        elseif ping < 80 then
-            Arceus.Silent.PredictionVelocity = 0.138
-        elseif ping < 90 then
-            Arceus.Silent.PredictionVelocity = 0.146
-        elseif ping < 100 then
-            Arceus.Silent.PredictionVelocity = 0.14322
-        elseif ping < 110 then
-            Arceus.Silent.PredictionVelocity = 0.146
-        elseif ping < 120 then
-            Arceus.Silent.PredictionVelocity = 0.149
-        elseif ping < 130 then
-            Arceus.Silent.PredictionVelocity = 0.151
-        elseif ping < 140 then
-            Arceus.Silent.PredictionVelocity = 0.1223333
-        elseif ping < 150 then
-            Arceus.Silent.PredictionVelocity = 0.15
-        elseif ping < 160 then
-            Arceus.Silent.PredictionVelocity = 0.16
-        elseif ping < 170 then
-            Arceus.Silent.PredictionVelocity = 0.1923111
-        elseif ping < 180 then
-            Arceus.Silent.PredictionVelocity = 0.19284
-        elseif ping > 180 then
-            Arceus.Silent.PredictionVelocity = 0.166547
+    return tgt
+end
+
+local function PredictPos(plr)
+    if not plr or not plr.Character then return nil end
+    local parts = SilentAim["Hit Location"].Parts or {}
+    local hitType = SilentAim["Hit Location"].Type or "Closest Part"
+    local camPos = Camera.CFrame.Position
+    local mousePos = Vector2.new(Mouse.X, Mouse.Y + GuiService:GetGuiInset().Y)
+    local bestPart, bestDistance = nil, math.huge
+    local bestPoint = nil
+
+    for _, partName in ipairs(parts) do
+        local part = plr.Character:FindFirstChild(partName)
+        if part and part:IsA("BasePart") then
+            if hitType == "Closest Part" then
+                local screenPos, onScreen = Camera:WorldToScreenPoint(part.Position)
+                local screenVector = Vector2.new(screenPos.X, screenPos.Y + GuiService:GetGuiInset().Y)
+                local dist = (screenVector - mousePos).Magnitude
+                if onScreen and dist < bestDistance then
+                    bestPart = part
+                    bestDistance = dist
+                end
+            elseif hitType == "Closest Point" then
+                -- For Closest Point mode, you could sample several points on the part's surface.
+                -- Here, simplified to part center for example purposes.
+                local screenPos, onScreen = Camera:WorldToScreenPoint(part.Position)
+                local screenVector = Vector2.new(screenPos.X, screenPos.Y + GuiService:GetGuiInset().Y)
+                local dist = (screenVector - mousePos).Magnitude
+                if onScreen and dist < bestDistance then
+                    bestPoint = part.Position
+                    bestDistance = dist
+                end
+            end
         end
+    end
+
+    local predictionLevel = SilentAim.Prediction.Level or { "Low", "Medium", "High", "Extreme" }
+    local predictionValue = SilentAim.Prediction.Sets[predictionLevel] or 0
+
+    if bestPart and hitType == "Closest Part" then
+        -- Predict position based on velocity and prediction value
+        if bestPart.Velocity then
+            return bestPart.Position + bestPart.Velocity * predictionValue
+        else
+            return bestPart.Position
+        end
+    elseif bestPoint and hitType == "Closest Point" then
+        return bestPoint
+    end
+
+    return nil
+end
+
+-- HOOK MOUSE.Hit
+if not getgenv().__SilentHooked then
+    getgenv().__SilentHooked = true
+    local mt = getrawmetatable(game)
+    local old = mt.__index
+    setreadonly(mt, false)
+    mt.__index = newcclosure(function(self, k)
+        if self == Mouse and k == "Hit" then
+            if SilentAim.Enabled then
+                local pl = GetClosest()
+                if pl then
+                    local pos = PredictPos(pl)
+                    if pos then
+                        MainEvent:FireServer(RemoteArgument, pos)
+                        return CFrame.new(pos)
+                    end
+                end
+            end
+        end
+        return old(self, k)
+    end)
+    setreadonly(mt, true)
+end
+
+-- TOGGLE KEYBIND
+UserInputService.InputBegan:Connect(function(input, gp)
+    if gp then return end
+    if input.KeyCode == Enum.KeyCode[SilentAim.Keybind] then
+        SilentAim.Enabled = not SilentAim.Enabled
     end
 end)
 
--- // The AimAssist Mouse Dragging/Check Functions
-Script.Functions.MouseChanger = LPH_NO_VIRTUALIZE(function()
-    if Arceus.AimAssist.Enabled and Script.Functions.Alive(AimTarget) and Players[tostring(AimTarget)].Character:FindFirstChild(Arceus.AimAssist.Part) and Script.Functions.OnScreen(Players[tostring(AimTarget)].Character[Arceus.AimAssist.Part]) then
-        local EndPosition = nil
-        local TargetPos = Players[tostring(AimTarget)].Character[Arceus.AimAssist.Part].Position
-        local TargetVel = Players[tostring(AimTarget)].Character[Arceus.AimAssist.Part].Velocity
-        local TargetMov = Players[tostring(AimTarget)].Character.Humanoid.MoveDirection
 
-        if Arceus.Both.DetectDesync then
-            local Magnitude = TargetVel.magnitude
-            local Magnitude2 = TargetMov.magnitude
-            if Magnitude > Arceus.Both.DesyncDetection then
-                DetectedDesyncV2 = true
-            elseif Magnitude < 1 and Magnitude2 > 0.01 then
-                DetectedDesyncV2 = true
-            elseif Magnitude > 5 and Magnitude2 < 0.01 then
-                DetectedDesyncV2 = true
-            else
-                DetectedDesyncV2 = false
-            end
-        else
-            DetectedDesyncV2 = false
-        end
-        if Arceus.Both.DetectUnderGround then 
-            if TargetVel.Y < Arceus.Both.UnderGroundDetection then            
-                DetectedUnderGroundV2 = true
-            else
-                DetectedUnderGroundV2 = false
-            end
-        else
-            DetectedUnderGroundV2 = false
-        end
+local cfg        = getgenv().Krylon
+local tbCfg      = cfg["Trigger bot"]
+local rangeCfg   = cfg.Range["Trigger bot"]
 
-        if Script.Functions.Alive(Client) then
-            if Arceus.AimAssist.DisableLocalDeath then
-                if Client.Character.Humanoid.health < 4 then
-                    AimTarget = nil
-                    IsTargetting = false
-                    return
-                end
-            end
-            if Arceus.AimAssist.DisableOutSideCircle then
-                local Magnitude = Script.Functions.GetMagnitudeFromMouse(AimTarget.Character.HumanoidRootPart)
-                if Script.Drawing.AimAssistCircle.Radius < Magnitude then
-                    AimTarget = nil
-                    IsTargetting = false
-                    return
-                end
-            end
-        end
+local Players          = game:GetService("Players")
+local RunService       = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Camera           = workspace.CurrentCamera
+local LocalPlayer      = Players.LocalPlayer
 
-        if Arceus.AimAssist.DisableOn_KO and AimTarget.Character:FindFirstChild("BodyEffects") then 
-            local KoCheck = AimTarget.Character.BodyEffects:FindFirstChild("K.O").Value
-            local Grabbed = AimTarget.Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
-            if KoCheck or Grabbed then
-                AimTarget = nil
-                IsTargetting = false
-                return
-            end
-        end
-        if Arceus.AimAssist.DisableTargetDeath then
-            if AimTarget.Character.Humanoid.health < 4 then
-                AimTarget = nil
-                IsTargetting = false
-                return
-            end
-        end
+-- Mouse helper: returns screen-pixel Vector2
+local function getMousePos()
+    return UserInputService:GetMouseLocation()
+end
 
-        if DetectedDesyncV2 and Arceus.AimAssist.PredictMovement then
-            local MoveDirection = TargetMov * 16
-            EndPosition = Camera:WorldToScreenPoint(TargetPos + (MoveDirection * Arceus.AimAssist.PredictionVelocity))
-        elseif DetectedUnderGroundV2 and Arceus.AimAssist.PredictMovement then
-            EndPosition = Camera:WorldToScreenPoint(TargetPos + (Vector3.new(TargetVel.X, 0, TargetVel.Z) * Arceus.AimAssist.PredictionVelocity))
-        elseif Arceus.AimAssist.PredictMovement then
-            if Arceus.AimAssist.UseShake and Script.Functions.Alive(Client) then
-                local Shake = Arceus.AimAssist.ShakeValue / 100
-                local Mag = math.ceil((TargetPos - Client.Character.HumanoidRootPart.Position).Magnitude)
-                EndPosition = Camera:WorldToScreenPoint(TargetPos + (TargetVel * Arceus.AimAssist.PredictionVelocity) + Script.Functions.RandomVec(Mag * Shake, 0.1))
-            else
-                EndPosition = Camera:WorldToScreenPoint(TargetPos + (TargetVel * Arceus.AimAssist.PredictionVelocity))
-            end
-        else
-            if Arceus.AimAssist.UseShake and Script.Functions.Alive(Client) then
-                local Shake = Arceus.AimAssist.ShakeValue / 100
-                local Mag = math.ceil((TargetPos - Client.Character.HumanoidRootPart.Position).Magnitude)
-                EndPosition = Camera:WorldToScreenPoint(TargetPos + Script.Functions.RandomVec(Mag * Shake, 0.1))
-            else
-                EndPosition = Camera:WorldToScreenPoint(TargetPos)
-            end
-        end
+-- FOV circle
+local Circle = Drawing.new("Circle")
+Circle.Visible      = false
+Circle.Transparency = 0
+Circle.Color        = Color3.new(1,1,1)
+Circle.Filled       = false
 
-        if EndPosition ~= nil then
-            local InCrementX = (EndPosition.X - Mouse.X) * Arceus.AimAssist.Smoothness_X
-            local InCrementY = (EndPosition.Y - Mouse.Y) * Arceus.AimAssist.Smoothness_Y
-            mousemoverel(InCrementX, InCrementY)
-        end
+-- Keyboard bind only
+local bindKey = Enum.KeyCode[tbCfg.Keybind.Bind:upper()]
+local isToggle = tbCfg.Keybind["Keybind Mode"]:lower() == "toggle"
+local holding = false
+if isToggle and tbCfg.Enabled == nil then
+    tbCfg.Enabled = false
+end
+
+-- Input handlers
+UserInputService.InputBegan:Connect(function(inp, gp)
+    if gp then return end
+    if inp.KeyCode ~= bindKey then return end
+
+    if isToggle then
+        tbCfg.Enabled = not tbCfg.Enabled
+    else
+        holding = true
     end
 end)
 
---// Update Size/Position Of Circle
-Script.Functions.UpdateFOV = LPH_NO_VIRTUALIZE(function()
-    if (not Script.Drawing.SilentCircle and not Script.Drawing.AimAssistCircle) then
-        return Script.Drawing.SilentCircle and Script.Drawing.AimAssistCircle
+UserInputService.InputEnded:Connect(function(inp)
+    if inp.KeyCode == bindKey and not isToggle then
+        holding = false
     end
-    
-    Script.Drawing.AimAssistCircle.Visible = Arceus.AimAssistFov.Visible
-    Script.Drawing.AimAssistCircle.Filled = Arceus.AimAssistFov.Filled
-    Script.Drawing.AimAssistCircle.Color = Arceus.AimAssistFov.Color
-    Script.Drawing.AimAssistCircle.Transparency = Arceus.AimAssistFov.Transparency
-    Script.Drawing.AimAssistCircle.Position = Vector2.new(Mouse.X, Mouse.Y + GuiS:GetGuiInset().Y)
-	Script.Drawing.AimAssistCircle.Radius = Arceus.AimAssistFov.Radius * 3
-    
-    Script.Drawing.SilentCircle.Visible = Arceus.SilentFov.Visible
-    Script.Drawing.SilentCircle.Color = Arceus.SilentFov.Color
-    Script.Drawing.SilentCircle.Filled = Arceus.SilentFov.Filled
-    Script.Drawing.SilentCircle.Transparency = Arceus.SilentFov.Transparency
-    Script.Drawing.SilentCircle.Position = Vector2.new(Mouse.X, Mouse.Y + GuiS:GetGuiInset().Y)
-	Script.Drawing.SilentCircle.Radius = Arceus.SilentFov.Radius * 3
-	
-    if Arceus.RangeFov.Enabled or Arceus.GunFov.Enabled then
-		local CurrentGun = Script.Functions.GetCurrentWeaponName()
-		if Arceus.GunFov.Enabled then
-			local WeaponSettings = Arceus.GunFov[CurrentGun]
-			if WeaponSettings ~= nil then
-				Arceus.SilentFov.Radius = WeaponSettings.Fov
-			end
-		end
-		if Arceus.RangeFov.Enabled then
-			local WeaponSettingsV2 = Arceus.RangeFov[CurrentGun]
-			if WeaponSettingsV2 ~= nil then
-				if Script.Functions.Alive(SilentTarget) and Script.Functions.Alive(Client) then
-                    local Magnitude = (SilentTarget.Character.HumanoidRootPart.Position - Client.Character.HumanoidRootPart.Position).Magnitude
-					if Magnitude < Arceus.RangeFov.Close_Activation then
-						Arceus.SilentFov.Radius = WeaponSettingsV2.Close
-					elseif Magnitude < Arceus.RangeFov.Medium_Activation then
-						Arceus.SilentFov.Radius = WeaponSettingsV2.Med
-					elseif Magnitude < Arceus.RangeFov.Far_Activation then
-						Arceus.SilentFov.Radius = WeaponSettingsV2.Far
-					end
-				end
-			end
-		end
-	end
 end)
 
--- // Updates Esp Posistions
-Script.Functions.UpdateEsp = LPH_NO_VIRTUALIZE(function()
-    for i,v in pairs(Script.EspPlayers) do
-        if Arceus.Esp.Enabled and i ~= Client and i.Character and i.Character:FindFirstChild("Humanoid") and i.Character:FindFirstChild("HumanoidRootPart") and i.Character:FindFirstChild("Head") then
-            local Hum = i.Character.Humanoid
-            local Hrp = i.Character.HumanoidRootPart
-            
-            local Vector, OnScreen = Camera:WorldToViewportPoint(i.Character.HumanoidRootPart.Position)
-            local Size = (Camera:WorldToViewportPoint(Hrp.Position - Vector3.new(0, 3, 0)).Y - Camera:WorldToViewportPoint(Hrp.Position + Vector3.new(0, 2.6, 0)).Y) / 2
-            local BoxSize = Vector2.new(math.floor(Size * 1.5), math.floor(Size * 1.9))
-            local BoxPos = Vector2.new(math.floor(Vector.X - Size * 1.5 / 2), math.floor(Vector.Y - Size * 1.6 / 2))
-            local BottomOffset = BoxSize.Y + BoxPos.Y + 1
+local function isActive()
+    return isToggle and tbCfg.Enabled or holding
+end
 
-            if OnScreen then
-                if Arceus.Esp.Name.Enabled then
-                    v.Name.Position = Vector2.new(BoxSize.X / 2 + BoxPos.X, BoxPos.Y - 16)
-                    v.Name.Outline = Arceus.Esp.Name.OutLine
-                    v.Name.Text = tostring(i)
-                    v.Name.Color = Arceus.Esp.Name.Color
-                    v.Name.OutlineColor = Color3.fromRGB(0, 0, 0)
-                    v.Name.Font = 0
-                    v.Name.Size = 16
+-- Knocked check
+local function isKnocked(plr)
+    if not plr.Character then return true end
+    local tag = plr.Character:FindFirstChild("BodyEffects")
+    local knocked = tag and tag:FindFirstChild("K.O")
+    return knocked and knocked.Value
+end
 
-                    v.Name.Visible = true
-                else
-                    v.Name.Visible = false
-                end
-                if Arceus.Esp.Distance.Enabled and Client.Character and Client.Character:FindFirstChild("HumanoidRootPart") then
-                    v.Distance.Position = Vector2.new(BoxSize.X / 2 + BoxPos.X, BottomOffset)
-                    v.Distance.Outline = Arceus.Esp.Distance.OutLine
-                    v.Distance.Text = "[" .. math.floor((Hrp.Position - Client.Character.HumanoidRootPart.Position).Magnitude) .. "m]"
-                    v.Distance.Color = Arceus.Esp.Distance.Color
-                    v.Distance.OutlineColor = Color3.fromRGB(0, 0, 0)
-                    BottomOffset = BottomOffset + 15
+-- Simple LOS check
+local function WallCheck(part)
+    local origin = Camera.CFrame.Position
+    local dir    = part.Position - origin
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {LocalPlayer.Character, Camera}
+    params.FilterType = Enum.RaycastFilterType.Blacklist
+    params.IgnoreWater = true
+    local hit = workspace:Raycast(origin, dir, params)
+    return not (hit and not hit.Instance:IsDescendantOf(part.Parent))
+end
 
-                    v.Distance.Font = 0
-                    v.Distance.Size = 16
+-- Find target
+local function GetTarget()
+    local bestDist = math.huge
+    local tgt, tgtPart
+    local useFOV = tbCfg["Custom Size"].Enabled
+    local mousePos = getMousePos()
 
-                    v.Distance.Visible = true
-                else
-                    v.Distance.Visible = false
-                end
-                if Arceus.Esp.Box.Enabled then
-                    v.BoxOutline.Size = BoxSize
-                    v.BoxOutline.Position = BoxPos
-                    v.BoxOutline.Visible = Arceus.Esp.Box.OutLine
-                    v.BoxOutline.Color = Color3.fromRGB(0, 0, 0)
-    
-                    v.Box.Size = BoxSize
-                    v.Box.Position = BoxPos
-                    v.Box.Color = Arceus.Esp.Box.Color
-                    v.Box.Visible = true
-                else
-                    v.BoxOutline.Visible = false
-                    v.Box.Visible = false
-                end
-                if Arceus.Esp.HealthBar.Enabled then
-                    v.HealthBar.From = Vector2.new((BoxPos.X - 5), BoxPos.Y + BoxSize.Y)
-                    v.HealthBar.To = Vector2.new(v.HealthBar.From.X, v.HealthBar.From.Y - (Hum.Health / Hum.MaxHealth) * BoxSize.Y)
-                    v.HealthBar.Color = Arceus.Esp.HealthBar.Color
-                    v.HealthBar.Visible = true
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and not isKnocked(plr) then
+            local char = plr.Character
+            local pos
 
-                    v.HealthBarOutline.From = Vector2.new(v.HealthBar.From.X, BoxPos.Y + BoxSize.Y + 1)
-                    v.HealthBarOutline.To = Vector2.new(v.HealthBar.From.X, (v.HealthBar.From.Y - 1 * BoxSize.Y) -1)
-                    v.HealthBarOutline.Color = Color3.fromRGB(0, 0, 0)
-                    v.HealthBarOutline.Visible = Arceus.Esp.HealthBar.OutLine
-                else
-                    v.HealthBarOutline.Visible = false
-                    v.healthBar.Visible = false
-                end
-                if Arceus.Esp.HealthText.Enabled then
-                    v.HealthText.Text = tostring(math.floor((Hum.Health / Hum.MaxHealth) * 100 + 0.5))
-                    v.HealthText.Position = Vector2.new((BoxPos.X - 20), (BoxPos.Y + BoxSize.Y - 1 * BoxSize.Y) -1)
-                    v.HealthText.Color = Arceus.Esp.HealthText.Color
-                    v.HealthText.OutlineColor = Color3.fromRGB(0, 0, 0)
-                    v.HealthText.Outline = Arceus.Esp.HealthText.OutLine
-
-                    v.HealthText.Font = 0
-                    v.HealthText.Size = 16
-
-                    v.HealthText.Visible = true
-                else
-                    v.HealthText.Visible = false
+            if useFOV then
+                -- Use the humanoid root part with prediction offset
+                pos = char.HumanoidRootPart.Position + Vector3.new(tbCfg.Prediction, tbCfg.Prediction, tbCfg.Prediction)
+                local sp, on = Camera:WorldToScreenPoint(pos)
+                if not on or (Vector2.new(sp.X, sp.Y) - mousePos).Magnitude > Circle.Radius then
+                    continue
                 end
             else
-                v.Name.Visible = false
-                v.BoxOutline.Visible = false
-                v.Box.Visible = false
-                v.HealthBarOutline.Visible = false
-                v.HealthBar.Visible = false
-                v.HealthText.Visible = false
-                v.Distance.Visible = false
+                -- Find closest hit part within 20 px of mouse
+                for _, limb in ipairs(tbCfg.HitParts.Parts) do
+                    local part = char:FindFirstChild(limb)
+                    if part and part:IsA("BasePart") and part.Transparency < 1 then
+                        local sp, on = Camera:WorldToScreenPoint(part.Position)
+                        if on and (Vector2.new(sp.X, sp.Y) - mousePos).Magnitude <= 20 then
+                            pos = part.Position
+                            break
+                        end
+                    end
+                end
+                if not pos then continue end
             end
-        else
-            v.Name.Visible = false
-            v.BoxOutline.Visible = false
-            v.Box.Visible = false
-            v.HealthBarOutline.Visible = false
-            v.HealthBar.Visible = false
-            v.HealthText.Visible = false
-            v.Distance.Visible = false
+
+            if cfg.Range.Enabled and rangeCfg and (Camera.CFrame.Position - pos).Magnitude > rangeCfg then
+                continue
+            end
+
+            local rayPart = useFOV and char.HumanoidRootPart or char:FindFirstChildWhichIsA("BasePart")
+            if not WallCheck(rayPart or char.HumanoidRootPart) then
+                continue
+            end
+
+            local score = useFOV 
+                and (Vector2.new(Camera:WorldToScreenPoint(pos)) - mousePos).Magnitude
+                or (Camera.CFrame.Position - pos).Magnitude
+
+            if score < bestDist then
+                bestDist = score
+                tgt, tgtPart = plr, rayPart
+            end
         end
     end
-end)
 
--- // Client Fps (EXECUTES PER FRAME)
-RS.Heartbeat:Connect(LPH_NO_VIRTUALIZE(function()
-    Script.Functions.GetClosestPlayer()
-    Script.Functions.SilentMisc()
-    Script.Functions.MouseChanger()
-end))
+    return tgt, tgtPart
+end
 
--- // Server Tick (EXECUTES PER TICK)
-RS.RenderStepped:Connect(LPH_NO_VIRTUALIZE(function()
-    Script.Functions.UpdateEsp()
-    Script.Functions.UpdateFOV()
-    if Arceus.Silent.Enabled and Arceus.Silent.ClosestPoint and Script.Functions.Alive(SilentTarget) and Players[tostring(SilentTarget)].Character:FindFirstChild(Arceus.Silent.Part) then
-        local ClosestPoint = Script.Functions.GetClosestPointOfPart(Players[tostring(SilentTarget)].Character[Arceus.Silent.Part])
-        ClosestPointCF = CFrame.new(ClosestPoint.X, ClosestPoint.Y, ClosestPoint.Z)
-    end
-    if Arceus.AimAssist.Enabled and Script.Functions.Alive(AimTarget) and Arceus.Silent.ClosestPart and Script.Functions.Alive(SilentTarget) then
-        local currentpart = tostring(Script.Functions.GetClosestBodyPart(AimTarget.Character))
-        if Arceus.AimAssist.ClosestPart then
-			Arceus.AimAssist.Part = currentpart
-		end
-        if Arceus.Silent.ClosestPart then
-            Arceus.Silent.Part = currentpart
-            OldSilentAimPart = Arceus.Silent.Part
-        end
+-- Setup FOV circle if enabled (initial setup)
+if tbCfg["Custom Size"].Enabled then
+    Circle.Radius   = tbCfg["Custom Size"].Value * 12
+    Circle.NumSides = math.max(12, Circle.Radius * 2)
+    Circle.Visible  = true
+end
+
+local lastShot = tick()
+RunService.Heartbeat:Connect(function()
+    if not isActive() then
+        Circle.Visible = false
         return
     end
-    if Arceus.AimAssist.Enabled and Arceus.AimAssist.ClosestPart and Script.Functions.Alive(AimTarget) then
-        Arceus.AimAssist.Part = tostring(Script.Functions.GetClosestBodyPart(AimTarget.Character))
-    end
-    if Arceus.Silent.Enabled and Arceus.Silent.ClosestPart and Script.Functions.Alive(SilentTarget) then
-        Arceus.Silent.Part = tostring(Script.Functions.GetClosestBodyPart(SilentTarget.Character))
-        OldSilentAimPart = Arceus.Silent.Part
-    end
-end))
 
--- // Checks Everyone In The Server And Puts It In A Table
-for _, Player in ipairs(Players:GetPlayers()) do
-    if (Player ~= Client and Client:IsFriendsWith(Player.UserId)) then
-        table.insert(Script.Friends, Player)
+    if tbCfg["Custom Size"].Enabled then
+        local mousePos = getMousePos()
+        Circle.Position = mousePos
+        Circle.Radius   = tbCfg["Custom Size"].Value * 12
+        Circle.Visible  = true
+    else
+        Circle.Visible = false
     end
-    Script.Functions.NewPlayer(Player)
+
+    local plr, part = GetTarget()
+    if not plr or not part then return end
+    if tick() - lastShot < tbCfg.Delay.Value then return end
+
+    local tool = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Tool")
+    if not tool or not tool:FindFirstChild("Handle") then return end
+
+    local function clean(s) return s:lower():gsub("[%[%]%s%-]", "") end
+    local allowed = false
+    for _, w in ipairs(tbCfg.Weapons) do
+        if clean(tool.Name):find(clean(w), 1, true) then
+            allowed = true
+            break
+        end
+    end
+    if not allowed then return end
+
+    tool:Activate()
+    lastShot = tick()
+end)
+
+
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local opts = getgenv().Krylon["Speed Modifications"].Options
+
+-- State variables
+local speed = opts.DefaultSpeed
+local toggledOn = false
+local originalSpeed = nil
+local humanoid = nil
+
+-- Apply or revert speed based on toggle mode / state
+local function applySpeed()
+    if not humanoid then return end
+
+    if opts.ToggleMode then
+        if toggledOn then
+            humanoid.WalkSpeed = speed
+        else
+            humanoid.WalkSpeed = originalSpeed
+        end
+    else
+        humanoid.WalkSpeed = speed
+    end
 end
 
--- // Checks When Players Joins And Adds Them To A Table
-Players.PlayerAdded:Connect(function(Player)
-    if (Client:IsFriendsWith(Player.UserId)) then
-        table.insert(Script.Friends, Player)
+-- Handle character load
+local function onCharacterAdded(char)
+    humanoid = char:WaitForChild("Humanoid")
+    originalSpeed = humanoid.WalkSpeed
+
+    -- If toggle mode is off, always apply speed
+    if opts.Enabled and not opts.ToggleMode then
+        toggledOn = true
+        humanoid.WalkSpeed = speed
     end
-    Script.Functions.NewPlayer(Player)
+end
+
+-- Connect to current character and future respawns
+if player.Character then
+    onCharacterAdded(player.Character)
+end
+player.CharacterAdded:Connect(onCharacterAdded)
+
+-- Input handling
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed or not opts.Enabled then return end
+    if not humanoid then return end
+
+    local kc = input.KeyCode.Name
+
+    -- Toggle movement on/off
+    if opts.ToggleMode and kc == opts.Keybinds.ToggleMovement then
+        toggledOn = not toggledOn  
+        applySpeed()
+        return
+    end
+
+    -- Increase speed
+    if kc == opts.Keybinds["Speed +5"] then
+        speed = speed + 5
+        applySpeed()
+        return
+    end
+
+    -- Decrease speed
+    if kc == opts.Keybinds["Speed -5"] then
+        speed = math.max(0, speed - 5)
+        applySpeed()
+        return
+    end
 end)
 
--- // Checks If A Player Left And Removes Them From The Table
-Players.PlayerRemoving:Connect(function(Player)
-    local i = table.find(Script.Friends, Player)
-    if (i) then
-        table.remove(Script.Friends, i)
+-- Maintain speed in case something overrides it
+RunService.Heartbeat:Connect(function()
+    if opts.Enabled and humanoid then
+        if (opts.ToggleMode and toggledOn) or not opts.ToggleMode then
+            if humanoid.WalkSpeed ~= speed then
+                humanoid.WalkSpeed = speed
+            end
+        end
     end
-    for i,v in pairs(Script.EspPlayers[Player]) do
-        v:Remove()
-    end
-    Script.EspPlayers[Player] = nil
 end)
 
-end)()
+-- Services
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Workspace = game:GetService("Workspace")
+
+-- Local player
+local LocalPlayer = Players.LocalPlayer
+local Camera = Workspace.CurrentCamera
+local LocalCharacter = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local LocalRootPart = LocalCharacter:WaitForChild("HumanoidRootPart")
+
+-- Settings from getgenv()
+local Camlock = getgenv().Krylon['Camlock']
+local FOV = Camlock.Fov * 12
+local ShowFov = Camlock['Show Fov']
+local Key = Enum.KeyCode[Camlock.Keybind]
+local PredictionSet = Camlock.Prediction
+local HitLocationType = Camlock['Hit Location'].Type
+local HitParts = Camlock['Hit Location'].Parts
+local Checks = Camlock.Checks
+
+-- Range settings
+local RangeSettings = getgenv().Krylon['Range']
+local RangeEnabled = RangeSettings.Enabled
+local MaxCamlockRange = RangeSettings['Camlock']
+
+-- Internal state
+local Target = nil
+local CamlockEnabled = false
+
+-- Raycast setup
+local rayParams = RaycastParams.new()
+rayParams.FilterType = Enum.RaycastFilterType.Blacklist
+rayParams.IgnoreWater = true
+
+-- FOV Circle
+local FOVCircle
+if FOV and FOV > 0 and ShowFov then
+    FOVCircle = Drawing.new("Circle")
+    FOVCircle.Color = Color3.fromRGB(255, 255, 255)
+    FOVCircle.Thickness = 1
+    FOVCircle.Transparency = 0.3
+    FOVCircle.Filled = false
+end
+
+-- Utility Checks
+local function isObstructed(targetPos)
+    if not LocalRootPart then return true end
+    rayParams.FilterDescendantsInstances = {LocalCharacter}
+    local direction = (targetPos - LocalRootPart.Position)
+    local result = Workspace:Raycast(LocalRootPart.Position, direction, rayParams)
+    return result and result.Instance and result.Instance.CanCollide
+end
+
+local function isKnocked(plr)
+    local char = plr.Character
+    if not char then return true end
+    local tag = char:FindFirstChild("BodyEffects")
+    local knocked = tag and tag:FindFirstChild("K.O")
+    return knocked and knocked.Value == true
+end
+
+local function isGrabbed(plr)
+    return plr.Character and plr.Character:FindFirstChild("GRABBING_CONSTRAINT") ~= nil
+end
+
+local function isInVehicle(plr)
+    return plr.Character and plr.Character:FindFirstChild("SeatWeld") ~= nil
+end
+
+local function isInRange(player)
+    if not player.Character then return false end
+    local targetRoot = player.Character:FindFirstChild("HumanoidRootPart")
+    if not LocalRootPart or not targetRoot then return false end
+    local distance = (targetRoot.Position - LocalRootPart.Position).Magnitude
+    return distance <= MaxCamlockRange
+end
+
+local function isValidTarget(player)
+    if not player.Character or player == LocalPlayer then return false end
+    local humanoid = player.Character:FindFirstChildWhichIsA("Humanoid")
+    if not humanoid or humanoid.Health <= 0 then return false end
+
+    if RangeEnabled and not isInRange(player) then return false end
+
+    if table.find(Checks, "Wall") then
+        local part = player.Character:FindFirstChild("HumanoidRootPart")
+        if part and isObstructed(part.Position) then return false end
+    end
+    if table.find(Checks, "Knocked") and isKnocked(player) then return false end
+    if table.find(Checks, "Grabbed") and isGrabbed(player) then return false end
+    if table.find(Checks, "Vehicle") and isInVehicle(player) then return false end
+
+    return true
+end
+
+local function getClosestTarget()
+    local closestPlayer = nil
+    local shortestDistance = FOV
+
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if isValidTarget(plr) then
+            local char = plr.Character
+            for _, partName in ipairs(HitParts) do
+                local part = char:FindFirstChild(partName)
+                if part then
+                    local screenPos, onScreen = Camera:WorldToViewportPoint(part.Position)
+                    if onScreen then
+                        local dist = (Vector2.new(screenPos.X, screenPos.Y) - UserInputService:GetMouseLocation()).Magnitude
+                        if dist < shortestDistance then
+                            closestPlayer = plr
+                            shortestDistance = dist
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return closestPlayer
+end
+
+local function getHitPart(player)
+    local char = player.Character
+    local closestPart, closestDist = nil, math.huge
+
+    for _, partName in ipairs(HitParts) do
+        local part = char:FindFirstChild(partName)
+        if part then
+            local screenPos, onScreen = Camera:WorldToViewportPoint(part.Position)
+            if onScreen then
+                local dist = (Vector2.new(screenPos.X, screenPos.Y) - UserInputService:GetMouseLocation()).Magnitude
+                if dist < closestDist then
+                    closestPart = part
+                    closestDist = dist
+                end
+            end
+        end
+    end
+    return closestPart
+end
+
+-- Input: Toggle Camlock
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+    if input.KeyCode == Key then
+        CamlockEnabled = not CamlockEnabled
+        if not CamlockEnabled then Target = nil end
+    end
+end)
+
+-- Main Camlock loop
+RunService.RenderStepped:Connect(function()
+    if not Camlock.Enabled then return end
+
+    if FOVCircle then
+        FOVCircle.Position = UserInputService:GetMouseLocation()
+        FOVCircle.Radius = FOV
+        FOVCircle.Visible = Camlock['Show Fov']
+    end
+
+    if CamlockEnabled then
+        if not Target or not isValidTarget(Target) then
+            Target = getClosestTarget()
+        end
+
+        if Target and isValidTarget(Target) then
+            local hitPart = getHitPart(Target)
+            if hitPart then
+                local prediction = PredictionSet.Medium -- could be dynamic by ping
+                local predictedPosition = hitPart.Position + (hitPart.Velocity * prediction)
+
+                local origin = Camera.CFrame.Position
+                local direction = (predictedPosition - origin).Unit
+                local desiredCFrame = CFrame.new(origin, origin + direction)
+
+                Camera.CFrame = Camera.CFrame:Lerp(desiredCFrame, Camlock.Value.Snappiness)
+            end
+        end
+    end
+end)
+
+
+end)
